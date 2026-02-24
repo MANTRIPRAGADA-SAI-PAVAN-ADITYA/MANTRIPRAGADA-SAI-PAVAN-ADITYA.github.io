@@ -9,7 +9,40 @@
   --accent2: #22d3ee;
   --radius: 18px;
 }
+.thinking-list {
+  list-style: none;
+  padding: 0;
+}
 
+.thinking-list li {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.project-img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 16px 0;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+  gap: 24px;
+}
+
+.contact-card {
+  text-align: center;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.contact-card img {
+  width: 40px;
+  margin-bottom: 12px;
+}
 /* RESET */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
