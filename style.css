@@ -290,3 +290,33 @@ body.light {
   --text: #111827;
   --muted: #4b5563;
 }
+/* ARCHITECTURE DIAGRAM */
+.arch-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0;
+}
+
+.arch-node {
+  padding: 20px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 200px;
+  text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.arch-node:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 40px rgba(99,102,241,.35);
+}
+
+.arch-line {
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  opacity: 0.7;
+}
