@@ -327,26 +327,30 @@ body.light {
   color: var(--muted);
   margin-bottom: 18px;
 }
-/* INTRO IDENTITY BLOCK — CENTERED */
+/* INTRO IDENTITY BLOCK — FORCE CENTER */
 .intro {
-  padding: 120px 24px 80px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
   background: linear-gradient(
     180deg,
     rgba(99,102,241,0.12),
     transparent
   );
-  text-align: center; /* THIS is the key */
 }
 
 .intro-inner {
-  max-width: 900px;   /* slightly tighter for better balance */
-  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;   /* actual text centering */
 }
 
 .intro-name {
   font-size: 64px;
   line-height: 1.1;
-  margin: 0 0 16px;
+  margin-bottom: 16px;
   background: linear-gradient(135deg,var(--accent1),var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -361,5 +365,4 @@ body.light {
 .intro-desc {
   font-size: 20px;
   color: var(--text);
-  margin: 0 auto;
 }
