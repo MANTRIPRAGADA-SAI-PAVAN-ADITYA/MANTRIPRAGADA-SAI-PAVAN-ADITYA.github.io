@@ -21,3 +21,11 @@ document.querySelectorAll('.toggle').forEach(btn => {
     btn.closest('.card').classList.toggle('open');
   };
 });
+// Resume modal
+function openResume() {
+  document.getElementById("resumeModal").style.display = "flex";
+}
+
+function closeResume() {
+  document.getElementById("resumeModal").style.display = "none";
+}
