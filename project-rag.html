@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enterprise RAG Engine · Case Study</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main class="container">
+
+<h1>Enterprise RAG Engine</h1>
+<p class="tagline">
+Production-grade legal & patent intelligence system using LLMs
+</p>
+
+<!-- CONTEXT -->
+<section class="card">
+<h2>Problem</h2>
+<p>
+Legal and patent teams were manually reviewing hundreds of thousands of
+documents to extract precedents, summaries, and insights.
+This process was slow, expensive, and error-prone.
+</p>
+</section>
+
+<section class="card">
+<h2>Constraints</h2>
+<ul>
+<li>Documents contained sensitive legal and proprietary data</li>
+<li>Hallucinations were unacceptable</li>
+<li>Latency had to stay sub-second for search</li>
+<li>System needed to scale without retraining models constantly</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Design Decisions</h2>
+<ul>
+<li>Used Retrieval-Augmented Generation instead of fine-tuning alone</li>
+<li>Vector search as the primary grounding mechanism</li>
+<li>Chunking + metadata filters to reduce context noise</li>
+<li>Microservice architecture to isolate inference and retrieval</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Architecture Overview</h2>
+<ul>
+<li>Document ingestion → chunking → embedding pipeline</li>
+<li>Vector database for semantic retrieval</li>
+<li>LLM used strictly for synthesis, not recall</li>
+<li>FastAPI layer for controlled inference</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Outcome</h2>
+<ul>
+<li>60% reduction in manual document review time</li>
+<li>40% reduction in hallucinations vs baseline LLM usage</li>
+<li>Sub-second semantic search at 500k+ documents</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Why This Matters</h2>
+<p>
+This system demonstrates a core belief:
+<strong>LLMs are reasoning layers, not knowledge stores.</strong>
+Correct system design matters more than model size.
+</p>
+</section>
+
+</main>
+
+<footer>© 2026</footer>
+<script src="script.js"></script>
+</body>
+</html>
