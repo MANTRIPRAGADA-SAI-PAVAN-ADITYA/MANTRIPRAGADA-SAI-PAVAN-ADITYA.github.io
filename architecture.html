@@ -49,25 +49,24 @@ I design ML systems as closed loops — data, models, decisions, feedback.
 </ul>
 </div>
 <section class="card">
-  <h2>How My Systems Think</h2>
+  <h3>Layered Architecture</h3>
+  <ol>
+    <li><strong>Data Sources</strong> — operational systems, events, APIs</li>
+    <li><strong>Ingestion Layer</strong> — batch + streaming with validation</li>
+    <li><strong>Storage & Features</strong> — analytics + ML-ready abstractions</li>
+    <li><strong>Model Layer</strong> — training, evaluation, versioning</li>
+    <li><strong>Decision Layer</strong> — APIs, batch inference, workflows</li>
+    <li><strong>Monitoring Layer</strong> — drift, bias, performance</li>
+  </ol>
+</section>
 
-  <ul class="thinking-list">
-    <li>
-      <strong>Data is treated as a product</strong><br/>
-      Ingestion pipelines enforce contracts, validation, and freshness checks.
-    </li>
-    <li>
-      <strong>Models are replaceable components</strong><br/>
-      No system is tied to a single architecture or vendor.
-    </li>
-    <li>
-      <strong>Decisions are observable</strong><br/>
-      Every prediction is traceable to data, features, and model version.
-    </li>
-    <li>
-      <strong>Feedback is mandatory</strong><br/>
-      Drift, bias, and performance are monitored continuously.
-    </li>
+<section class="card">
+  <h3>Key Design Trade-offs</h3>
+  <ul>
+    <li>Centralized vs federated training</li>
+    <li>Latency vs accuracy</li>
+    <li>Privacy vs observability</li>
+    <li>Retraining vs online adaptation</li>
   </ul>
 </section>
 </main>
