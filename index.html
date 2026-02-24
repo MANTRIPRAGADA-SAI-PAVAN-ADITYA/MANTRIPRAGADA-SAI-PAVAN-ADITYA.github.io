@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Sai Pavan Aditya Mantripragada</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -19,50 +19,18 @@
 <main class="container">
   <h1>Sai Pavan Aditya Mantripragada</h1>
   <p class="tagline">
-    AI / ML Engineer · Data Platforms · Privacy-Preserving Systems · LLMs
+    AI / ML Engineer building production-grade systems at the intersection of
+    data platforms, privacy-preserving ML, and large-scale LLMs.
   </p>
 
-  <p>
-    I design and build production-grade data and machine-learning systems that
-    scale from analytics to real-world decision-making. My work spans enterprise
-    data engineering, applied ML, privacy-preserving AI, and large-scale LLM systems.
-  </p>
-
-  <p>
-    I focus on systems that last: clean architectures, explicit trade-offs,
-    and measurable business impact.
-  </p>
-
-  <section class="highlight">
-    <div>
-      <strong>10+ systems</strong><br/>designed & deployed
-    </div>
-    <div>
-      <strong>Privacy-first ML</strong><br/>federated & compliant
-    </div>
-    <div>
-      <strong>Production focus</strong><br/>not notebooks
-    </div>
-  </section>
+  <div class="highlight">
+    <div class="card"><strong>Systems over scripts</strong><br/>End-to-end ownership</div>
+    <div class="card"><strong>Privacy-first AI</strong><br/>Federated & compliant</div>
+    <div class="card"><strong>Production focus</strong><br/>Monitoring & scale</div>
+  </div>
 </main>
 
 <footer>© 2026 · Built deliberately.</footer>
-  <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  });
-
-  document.querySelectorAll('.event, .card, .highlight div').forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'all 0.6s ease';
-    observer.observe(el);
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>
