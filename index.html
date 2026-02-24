@@ -2,217 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sai Pavan Aditya Mantripragada</title>
-
-  <style>
-    :root {
-      --accent: #2563eb;
-      --muted: #6b7280;
-      --bg: #ffffff;
-      --line: #e5e7eb;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: #111827;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 80px 24px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 8px;
-    }
-
-    .tagline {
-      font-size: 20px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-
-    section {
-      margin-top: 80px;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin-bottom: 32px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
-    }
-
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      margin-left: 20px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--line);
-    }
-
-    .entry {
-      position: relative;
-      padding-left: 40px;
-      margin-bottom: 48px;
-    }
-
-    .entry::before {
-      content: "";
-      position: absolute;
-      left: -9px;
-      top: 6px;
-      width: 16px;
-      height: 16px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 0 6px rgba(37,99,235,0.15);
-    }
-
-    .date {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .title {
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .org {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    ul {
-      margin-top: 8px;
-      padding-left: 18px;
-    }
-
-    li {
-      margin-bottom: 6px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      margin-top: 100px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="container">
 
-    <!-- HERO -->
-    <h1>Sai Pavan Aditya Mantripragada</h1>
-    <div class="tagline">
-      AI / ML Engineer · Data Platforms · Privacy-Preserving AI · LLM Systems
+<nav>
+  <a href="index.html">Home</a>
+  <a href="timeline.html">Timeline</a>
+  <a href="projects.html">Projects</a>
+  <a href="research.html">Research</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main class="container">
+  <h1>Sai Pavan Aditya Mantripragada</h1>
+  <p class="tagline">
+    AI / ML Engineer · Data Platforms · Privacy-Preserving Systems · LLMs
+  </p>
+
+  <p>
+    I design and build production-grade data and machine-learning systems that
+    scale from analytics to real-world decision-making. My work spans enterprise
+    data engineering, applied ML, privacy-preserving AI, and large-scale LLM systems.
+  </p>
+
+  <p>
+    I focus on systems that last: clean architectures, explicit trade-offs,
+    and measurable business impact.
+  </p>
+
+  <section class="highlight">
+    <div>
+      <strong>10+ systems</strong><br/>designed & deployed
     </div>
+    <div>
+      <strong>Privacy-first ML</strong><br/>federated & compliant
+    </div>
+    <div>
+      <strong>Production focus</strong><br/>not notebooks
+    </div>
+  </section>
+</main>
 
-    <p>
-      I design and build production-grade machine learning and data systems that
-      scale from analytics to enterprise decision-making. My work focuses on
-      reliability, privacy, and long-term system design rather than one-off models.
-    </p>
-
-    <!-- TIMELINE -->
-    <section>
-      <h2>Education & Experience</h2>
-
-      <div class="timeline">
-
-        <div class="entry">
-          <div class="date">2025 — Present</div>
-          <div class="title">AI / ML Engineer</div>
-          <div class="org">Zensar Technologies · Hyderabad, India</div>
-          <ul>
-            <li>Architected enterprise data pipelines (Salesforce → Snowflake)</li>
-            <li>Enabled ML-ready datasets for forecasting and analytics</li>
-            <li>Led transition from descriptive BI to predictive systems</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="date">2024 — 2025</div>
-          <div class="title">Inventory & Supply Chain Data Analyst</div>
-          <div class="org">Greene King · London, UK</div>
-          <ul>
-            <li>Built ML demand-forecasting systems on AWS</li>
-            <li>Reduced overstock and churn using predictive models</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="date">2024</div>
-          <div class="title">MSc Data Science (Distinction)</div>
-          <div class="org">University of Essex · United Kingdom</div>
-          <ul>
-            <li>Specialization: Advanced ML & Data Engineering</li>
-            <li>Thesis on Federated Learning & Differential Privacy</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="date">2021 — 2022</div>
-          <div class="title">Programmer Analyst</div>
-          <div class="org">Cognizant · India</div>
-          <ul>
-            <li>Enterprise systems, integrations, and workflow optimization</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="date">2017 — 2021</div>
-          <div class="title">B.E. Computer Science (Distinction)</div>
-          <div class="org">Osmania University · India</div>
-          <ul>
-            <li>Published research on AR-based indoor navigation</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- LINKS -->
-    <section>
-      <h2>Links</h2>
-      <ul>
-        <li><a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/">LinkedIn</a></li>
-      </ul>
-    </section>
-
-    <footer>
-      © 2026 · Built clean, fast, and deliberately.
-    </footer>
-
-  </div>
+<footer>© 2026 · Built deliberately.</footer>
   <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
