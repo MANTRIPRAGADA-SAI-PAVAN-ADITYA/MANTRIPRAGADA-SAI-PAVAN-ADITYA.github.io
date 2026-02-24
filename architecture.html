@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Architecture</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="timeline.html">Timeline</a>
+<a href="projects.html">Projects</a>
+<a href="architecture.html">Architecture</a>
+<a href="research.html">Research</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<main class="container">
+<h2>System Architecture</h2>
+
+<div class="card">
+<h3>How I Design ML Systems</h3>
+<p>
+I treat machine learning as a system, not a model. My designs prioritize
+data quality, observability, privacy, and long-term maintainability.
+</p>
+</div>
+
+<div class="card">
+<h3>Typical ML System Flow</h3>
+<ul>
+<li>Ingestion: Event-driven & batch pipelines (Salesforce, APIs, streams)</li>
+<li>Storage: Analytical & feature-ready layers (Snowflake, S3)</li>
+<li>Modeling: Reproducible training with versioned data & models</li>
+<li>Serving: Low-latency APIs or batch inference</li>
+<li>Monitoring: Drift, bias, data freshness, and performance</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Design Principles</h3>
+<ul>
+<li>Systems must degrade gracefully</li>
+<li>Privacy is an architectural concern, not a patch</li>
+<li>ML should integrate cleanly with business workflows</li>
+<li>Observability beats raw accuracy in production</li>
+</ul>
+</div>
+
+</main>
+
+<footer>© 2026</footer>
+<script src="script.js"></script>
+</body>
+</html>
