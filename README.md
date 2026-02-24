@@ -1,55 +1,43 @@
-<h1 align="center">
-  👋 Hi, I'm Sai Pavan Aditya Mantripragada
-</h1>
+<!-- HERO BANNER -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=220&section=header&text=Sai%20Pavan%20Aditya%20Mantripragada&fontSize=42&fontAlignY=35&animation=fadeIn" />
+</p>
 
 <h3 align="center">
-  AI / ML Engineer · Data Platforms · Privacy-Preserving Systems · LLMs
+  AI / ML Engineer · Systems Thinker · Privacy-Preserving AI · LLMs
 </h3>
 
 <p align="center">
-  <a href="https://mantripragada-sai-pavan-aditya.github.io">
-    🌐 Portfolio Website
-  </a>
-  ·
-  <a href="https://www.linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/">
-    LinkedIn
-  </a>
-  ·
-  <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA">
-    GitHub
-  </a>
+  <a href="https://mantripragada-sai-pavan-aditya.github.io">🌐 Portfolio</a> ·
+  <a href="https://www.linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/">LinkedIn</a> ·
+  <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA">GitHub</a>
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=MANTRIPRAGADA-SAI-PAVAN-ADITYA&style=flat-square&color=blue" />
 </p>
 
 ---
 
-## 🧠 About Me
+## 🧠 Who I Am
 
-I design and build **production-grade machine learning and data systems** that operate under real-world constraints:
-scale, messy data, privacy regulations, and long-term maintainability.
+I design and build **production-grade machine learning and data systems** that survive real-world constraints:
+scale, data quality issues, privacy regulations, and long-term maintainability.
 
-I focus on **systems, not demos** — treating ML as an end-to-end product rather than a notebook experiment.
-
----
-
-## 🚀 What I Work On
-
-- 🧩 **End-to-end ML systems** (ingestion → modeling → inference → monitoring)
-- 🏗 **Data platforms** (Snowflake, AWS, analytics & ML-ready layers)
-- 🔐 **Privacy-preserving ML** (Federated Learning, Differential Privacy)
-- 🤖 **LLMs & RAG systems** (enterprise-grade, hallucination-aware)
-- ⚙️ **MLOps** (CI/CD, drift detection, observability)
+I don’t build demos.  
+I build **systems**.
 
 ---
 
 ## 🏛 How My Systems Think
 
-> *The model is not the product — the system is.*
+> **The model is not the product — the system is.**
 
-- Data is treated as a **product**, not a by-product
+- Data is treated as a **product**
 - Models are **replaceable components**
-- Every prediction is **traceable & observable**
-- Monitoring and feedback are **first-class citizens**
-- Privacy is an **architectural constraint**, not a patch
+- Predictions are **observable & auditable**
+- Feedback loops are **mandatory**
+- Privacy is an **architectural constraint**
 
 ---
 
@@ -65,40 +53,45 @@ I focus on **systems, not demos** — treating ML as an end-to-end product rathe
   <img src="https://skillicons.dev/icons?i=pytorch,tensorflow" />
 </p>
 
-### Data & Cloud
+### Data / Cloud / Infra
 <p>
   <img src="https://skillicons.dev/icons?i=aws,snowflake,docker,kubernetes" />
 </p>
 
-### Tools & Platforms
+### Tooling
 <p>
   <img src="https://skillicons.dev/icons?i=git,github,linux" />
 </p>
 
 ---
 
-## 🧪 Selected Projects
+## 🧪 Flagship Projects
 
 ### 🔹 Enterprise RAG Engine
+<p>
+  <img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg" width="600"/>
+</p>
+
 - LLM-powered legal & patent intelligence system  
 - Retrieval-Augmented Generation to minimize hallucinations  
 - Scales to **500k+ documents** with sub-second search  
 
-➡️ [Case Study](./project-rag.html)
+➡️ **[Case Study](./project-rag.html)**  
+➡️ **[Watch Demo](https://youtube.com/YOUR_VIDEO_LINK)**
 
 ---
 
 ### 🔹 Privacy-Preserving ML Framework
-- Federated Learning with Differential Privacy
-- GDPR-compliant decentralized training
-- Designed for regulated domains
+- Federated Learning + Differential Privacy  
+- GDPR-compliant decentralized training  
+- Designed for regulated domains  
 
 ---
 
 ### 🔹 MLOps Pipeline
-- Automated training, deployment, and monitoring
-- Drift detection & retraining
-- Cloud-native architecture
+- CI/CD for ML
+- Drift detection & automated retraining
+- Production monitoring
 
 ---
 
@@ -117,6 +110,18 @@ I focus on **systems, not demos** — treating ML as an end-to-end product rathe
 - **MSc Data Science (Distinction)** — University of Essex  
 - **Programmer Analyst** — Cognizant  
 - **B.E. Computer Science (Distinction)** — Osmania University  
+
+---
+
+## 📊 GitHub Stats (Signal, Not Noise)
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=MANTRIPRAGADA-SAI-PAVAN-ADITYA&show_icons=true&hide_title=true&count_private=true&theme=tokyonight" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MANTRIPRAGADA-SAI-PAVAN-ADITYA&theme=tokyonight" />
+</p>
 
 ---
 
@@ -139,10 +144,8 @@ I focus on **systems, not demos** — treating ML as an end-to-end product rathe
 
 ---
 
-## 📌 Philosophy
+## 🧭 Philosophy
 
 > *Good ML isn’t about bigger models — it’s about better systems.*
 
----
-
-⭐ If something here resonates, feel free to connect or explore my work.
+⭐ If this resonates, explore my work or connect.
