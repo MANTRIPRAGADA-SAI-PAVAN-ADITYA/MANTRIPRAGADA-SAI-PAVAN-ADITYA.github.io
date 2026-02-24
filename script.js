@@ -29,3 +29,10 @@ function openResume() {
 function closeResume() {
   document.getElementById("resumeModal").style.display = "none";
 }
+// Theme toggle
+const toggle = document.getElementById("themeToggle");
+if (toggle) {
+  toggle.onclick = () => {
+    document.body.classList.toggle("light");
+  };
+}
