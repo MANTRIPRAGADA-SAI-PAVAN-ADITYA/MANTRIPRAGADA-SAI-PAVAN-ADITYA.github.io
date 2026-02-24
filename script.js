@@ -36,3 +36,13 @@ if (toggle) {
     document.body.classList.toggle("light");
   };
 }
+// Animate architecture nodes
+document.querySelectorAll('.arch-node').forEach((node, i) => {
+  node.style.opacity = 0;
+  node.style.transform = 'translateY(20px)';
+  node.style.transition = 'all .6s ease';
+  setTimeout(() => {
+    node.style.opacity = 1;
+    node.style.transform = 'translateY(0)';
+  }, i * 120);
+});
