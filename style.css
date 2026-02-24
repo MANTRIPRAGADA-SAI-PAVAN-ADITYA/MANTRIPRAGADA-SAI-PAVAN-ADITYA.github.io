@@ -200,3 +200,93 @@ footer {
   font-size: 22px;
   color: var(--muted);
 }
+/* HERO */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(99,102,241,0.25), transparent 60%);
+}
+
+.hero-inner {
+  max-width: 900px;
+  padding: 40px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.1;
+}
+
+.hero-sub {
+  font-size: 22px;
+  color: var(--muted);
+  margin: 28px 0;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.hero-tags span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* ARCHITECTURE FLOW */
+.architecture {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.arch-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  min-width: 160px;
+  text-align: center;
+}
+
+.arch-arrow {
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+/* MUTED */
+.muted {
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+/* THEME TOGGLE */
+#themeToggle {
+  margin-left: 20px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+/* LIGHT MODE */
+body.light {
+  --bg: #f9fafb;
+  --bg-soft: #ffffff;
+  --card: rgba(0,0,0,0.04);
+  --border: rgba(0,0,0,0.1);
+  --text: #111827;
+  --muted: #4b5563;
+}
