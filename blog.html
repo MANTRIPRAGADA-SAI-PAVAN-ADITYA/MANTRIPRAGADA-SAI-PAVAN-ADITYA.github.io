@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog by Sai Pavan Aditya — insights on AI/ML, Privacy-Preserving AI, Federated Learning, and Data Engineering." />
+  <title>Blog | Sai Pavan Aditya</title>
+  <script>(function(){ document.documentElement.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'dark'); })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">SAI<span class="accent">.</span>PAVAN</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"    data-page="index">Home</a></li>
+      <li><a href="about.html"    data-page="about">About</a></li>
+      <li><a href="skills.html"   data-page="skills">Skills</a></li>
+      <li><a href="journey.html"  data-page="journey">Journey</a></li>
+      <li><a href="projects.html" data-page="projects">Projects</a></li>
+      <li><a href="research.html" data-page="research">Research</a></li>
+      <li><a href="social.html"   data-page="social">Social</a></li>
+      <li><a href="blog.html"     data-page="blog">Blog</a></li>
+      <li><a href="contact.html"  data-page="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" role="switch">
+        <span class="toggle-thumb">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+      </button>
+      <a href="contact.html" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero z1">
+  <div class="page-label fade-up">Writing</div>
+  <h1 class="page-title fade-up delay-1">Thoughts &amp; <span class="highlight">Insights</span></h1>
+  <p class="page-subtitle fade-up delay-2">Deep dives into AI/ML engineering, privacy-preserving systems, and lessons from production deployments.</p>
+</div>
+
+<section class="section z1">
+  <div class="section-inner">
+
+    <!-- Filter bar -->
+    <div class="blog-filter-bar fade-up">
+      <button class="blog-filter-btn active" data-filter="all">All</button>
+      <button class="blog-filter-btn" data-filter="federated-learning">Federated Learning</button>
+      <button class="blog-filter-btn" data-filter="privacy">Privacy AI</button>
+      <button class="blog-filter-btn" data-filter="mlops">MLOps</button>
+      <button class="blog-filter-btn" data-filter="llm">LLMs</button>
+    </div>
+
+    <!-- Post grid -->
+    <div class="grid-auto" id="blogGrid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">
+
+      <!-- Post 1 -->
+      <a href="blog/federated-learning-production.html" class="blog-post-card fade-up" data-categories="federated-learning privacy">
+        <div class="blog-card-cover" style="background:linear-gradient(135deg,rgba(124,106,247,0.2),rgba(34,211,238,0.1))">
+          🤝
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="badge badge-purple" style="font-size:.68rem">Federated Learning</span>
+            <span class="blog-card-date">Jan 2025</span>
+            <span class="blog-card-read">· 8 min read</span>
+          </div>
+          <h2 class="blog-card-title">Federated Learning in Production: Lessons from the Real World</h2>
+          <p class="blog-card-excerpt">Moving FL from research papers to live systems exposes challenges that benchmarks never mention — heterogeneous data, Byzantine clients, and communication constraints at scale.</p>
+          <div class="blog-card-tags">
+            <span class="tag">FL</span>
+            <span class="tag">Privacy</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Production</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 2 -->
+      <a href="blog/differential-privacy-guide.html" class="blog-post-card fade-up delay-1" data-categories="privacy">
+        <div class="blog-card-cover" style="background:linear-gradient(135deg,rgba(34,211,238,0.15),rgba(74,222,128,0.1))">
+          🔒
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="badge badge-cyan" style="font-size:.68rem">Privacy AI</span>
+            <span class="blog-card-date">Feb 2025</span>
+            <span class="blog-card-read">· 6 min read</span>
+          </div>
+          <h2 class="blog-card-title">Differential Privacy Demystified: Epsilon Budgets in Practice</h2>
+          <p class="blog-card-excerpt">Epsilon is the most misunderstood hyperparameter in ML. Here's how to reason about privacy budgets, compose guarantees, and avoid the pitfalls that leak information silently.</p>
+          <div class="blog-card-tags">
+            <span class="tag">Differential Privacy</span>
+            <span class="tag">GDPR</span>
+            <span class="tag">ML</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 3 -->
+      <a href="blog/rag-pipelines-privacy.html" class="blog-post-card fade-up delay-2" data-categories="llm privacy">
+        <div class="blog-card-cover" style="background:linear-gradient(135deg,rgba(244,114,182,0.15),rgba(124,106,247,0.1))">
+          🧩
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="badge badge-purple" style="font-size:.68rem">LLMs</span>
+            <span class="blog-card-date">Mar 2025</span>
+            <span class="blog-card-read">· 7 min read</span>
+          </div>
+          <h2 class="blog-card-title">Building Privacy-First RAG Pipelines for Enterprise LLMs</h2>
+          <p class="blog-card-excerpt">Retrieval-Augmented Generation unlocks LLM power over private data — but only if you build the retrieval layer with the same rigour as your model. Here's how.</p>
+          <div class="blog-card-tags">
+            <span class="tag">RAG</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Privacy</span>
+            <span class="tag">Enterprise</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 4 -->
+      <a href="blog/mlops-model-drift.html" class="blog-post-card fade-up delay-3" data-categories="mlops">
+        <div class="blog-card-cover" style="background:linear-gradient(135deg,rgba(251,146,60,0.15),rgba(248,113,113,0.1))">
+          📊
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="badge badge-orange" style="font-size:.68rem">MLOps</span>
+            <span class="blog-card-date">Apr 2025</span>
+            <span class="blog-card-read">· 5 min read</span>
+          </div>
+          <h2 class="blog-card-title">Detecting Model Drift Before It Costs You: A Practical MLOps Playbook</h2>
+          <p class="blog-card-excerpt">Production models degrade silently. Learn how to instrument your pipelines with statistical drift detectors, alerting, and auto-retraining triggers using MLflow and SageMaker.</p>
+          <div class="blog-card-tags">
+            <span class="tag">MLflow</span>
+            <span class="tag">SageMaker</span>
+            <span class="tag">Monitoring</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>Built by <span>Sai Pavan Aditya Mantripragada</span> · AI/ML Engineer</p>
+    <div class="footer-links">
+      <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2025 · Privacy-First · Production-Grade</p>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  // Blog filter
+  document.querySelectorAll('.blog-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('#blogGrid .blog-post-card').forEach(card => {
+        const cats = card.dataset.categories || '';
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journey | Sai Pavan Aditya</title>
+  <script>(function(){ document.documentElement.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'dark'); })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">SAI<span class="accent">.</span>PAVAN</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"    data-page="index">Home</a></li>
+      <li><a href="about.html"    data-page="about">About</a></li>
+      <li><a href="skills.html"   data-page="skills">Skills</a></li>
+      <li><a href="journey.html"  data-page="journey">Journey</a></li>
+      <li><a href="projects.html" data-page="projects">Projects</a></li>
+      <li><a href="research.html" data-page="research">Research</a></li>
+      <li><a href="social.html"   data-page="social">Social</a></li>
+      <li><a href="blog.html"     data-page="blog">Blog</a></li>
+      <li><a href="contact.html"  data-page="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" role="switch">
+        <span class="toggle-thumb">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+      </button>
+      <a href="contact.html" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero z1">
+  <div class="page-label fade-up">Career Journey</div>
+  <h1 class="page-title fade-up delay-1">From <span class="highlight">Hyderabad</span> to the World</h1>
+  <p class="page-subtitle fade-up delay-2">A decade-long journey through academia, enterprise, and cutting-edge AI research across India and the UK.</p>
+</div>
+
+<section class="section z1">
+  <div class="section-inner">
+    <!-- Legend -->
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.5rem" class="fade-up">
+      <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text2)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--green);display:inline-block"></span> Current Role
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text2)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block"></span> Work Experience
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text2)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--cyan);display:inline-block"></span> Education
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Zensar – CURRENT -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot present"></div>
+        <div class="tl-date">June 2025 — Present</div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">AI — ML Engineer</div>
+              <div class="tl-company">Zensar Technologies</div>
+              <div class="tl-loc">📍 Hyderabad, India</div>
+            </div>
+            <span class="badge badge-green" style="align-self:flex-start">● Current</span>
+          </div>
+          <ul class="tl-points">
+            <li>Architected end-to-end automated data pipelines using <strong>SnapLogic + Python</strong> to ingest high-velocity Salesforce CRM data into Snowflake — <strong>reducing data latency by 40%</strong>.</li>
+            <li>Spearheaded a real estate analytics suite delivering high-fidelity dashboards for portfolio performance and market trend analysis across cross-functional stakeholders.</li>
+            <li>Leading technical transition from descriptive to <strong>predictive modeling frameworks</strong>, deploying ML-driven forecasting to optimize asset management and strategic investment outcomes.</li>
+            <li>Engineered a Salesforce–Inspace data bridge, centralizing disparate data streams into a <strong>unified source of truth</strong> for real-time operational decisions.</li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+            <span class="tag">SnapLogic</span><span class="tag">Snowflake</span><span class="tag">Python</span>
+            <span class="tag">Salesforce</span><span class="tag">Power BI</span><span class="tag">Predictive ML</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Greene King -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-date">April 2024 — May 2025</div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Inventory &amp; Supply Chain Data Analyst</div>
+              <div class="tl-company">Greene King</div>
+              <div class="tl-loc">📍 London, United Kingdom 🇬🇧</div>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li>Deployed an ML-driven forecasting engine using <strong>AWS SageMaker + Time-Series analysis</strong> — achieving a <strong>7% reduction in overstock costs</strong> and improving supply chain resilience.</li>
+            <li>Developed sophisticated customer segmentation models with Scikit-Learn, directly contributing to an <strong>18% increase in campaign conversion rates</strong>.</li>
+            <li>Architected a predictive retention framework using <strong>XGBoost and Random Forest</strong> to identify at-risk accounts — reducing customer churn by <strong>12%</strong>.</li>
+            <li>Automated ETL workflows, slashing report generation time from <strong>120 minutes to under 10 minutes</strong> for the supply chain leadership team.</li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+            <span class="tag">AWS SageMaker</span><span class="tag">Scikit-Learn</span><span class="tag">XGBoost</span>
+            <span class="tag">Random Forest</span><span class="tag">ETL Automation</span><span class="tag">Time-Series</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MSc Essex -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot edu"></div>
+        <div class="tl-date">September 2022 — April 2024</div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">MSc Data Science</div>
+              <div class="tl-company">University of Essex</div>
+              <div class="tl-loc">📍 Colchester, United Kingdom 🇬🇧</div>
+            </div>
+            <span class="badge badge-cyan" style="align-self:flex-start">Distinction</span>
+          </div>
+          <ul class="tl-points">
+            <li>Specialization in <strong>Advanced Machine Learning</strong>, Large-Scale Data Engineering, and Algorithmic AI Ethics.</li>
+            <li>Research Thesis: Developed a <strong>Privacy-Preserving ML framework</strong> using Differential Privacy &amp; Federated Learning to ensure GDPR compliance in decentralised datasets.</li>
+            <li>Graduated with <strong>Distinction</strong>; specialised in cloud-native AI deployment strategies and production ML systems.</li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+            <span class="tag">Federated Learning</span><span class="tag">Differential Privacy</span>
+            <span class="tag">Cloud-native AI</span><span class="tag">GDPR Compliance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cognizant -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-date">March 2021 — July 2022</div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Programmer Analyst</div>
+              <div class="tl-company">Cognizant</div>
+              <div class="tl-loc">📍 Chennai, India 🇮🇳</div>
+            </div>
+          </div>
+          <ul class="tl-points">
+            <li>Managed critical enterprise content management systems (Documentum, xPlore), maintaining a <strong>95% SLA resolution rate</strong> for complex technical issues for global clients.</li>
+            <li>Redesigned document rendition workflows via DocShifter and Insight, achieving a <strong>30% reduction in processing errors</strong> through systematic optimisation.</li>
+            <li>Facilitated SAP-Documentum metadata synchronisation via the ASSAP framework — <strong>reducing human intervention by 40%</strong> and increasing data integrity.</li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+            <span class="tag">Documentum</span><span class="tag">xPlore</span><span class="tag">SAP</span>
+            <span class="tag">DocShifter</span><span class="tag">ASSAP</span><span class="tag">ECM Systems</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEng Osmania -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot edu"></div>
+        <div class="tl-date">2017 — July 2021</div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">BE Computer Science</div>
+              <div class="tl-company">Osmania University</div>
+              <div class="tl-loc">📍 Hyderabad, India 🇮🇳</div>
+            </div>
+            <span class="badge badge-cyan" style="align-self:flex-start">Distinction</span>
+          </div>
+          <ul class="tl-points">
+            <li>Core Competencies: Data Structures &amp; Algorithms, Distributed Systems, and Artificial Intelligence.</li>
+            <li>Capstone Project: <strong>Augmented Reality Indoor Navigation</strong> — integrated Computer Vision (OpenCV) with ARKit for real-time spatial mapping. <strong>Published in IRJMETS Vol. 3 (2021)</strong>.</li>
+            <li>Established the <strong>Matrusri Developer Space</strong> — a technical community of 200+ members. Organised workshops on Cloud Computing and AI.</li>
+            <li>Nominated for <strong>Best Student Award</strong> by the Institution of Engineers (India) for excellence in technical leadership and research innovation.</li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+            <span class="tag">OpenCV</span><span class="tag">ARKit</span><span class="tag">Computer Vision</span>
+            <span class="tag">Published Research</span><span class="tag">Community Leadership</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>Built by <span>Sai Pavan Aditya Mantripragada</span> · AI/ML Engineer</p>
+    <div class="footer-links">
+      <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2025</p>
+  </div>
+</footer>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

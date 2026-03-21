@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sai Pavan Aditya Mantripragada — AI/ML Engineer specializing in Privacy-Preserving AI, Federated Learning, and scalable data pipelines." />
+  <title>Sai Pavan Aditya | AI/ML Engineer</title>
+  <script>
+    // Anti-flash: apply saved theme before paint
+    (function(){ document.documentElement.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'dark'); })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">SAI<span class="accent">.</span>PAVAN</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"    data-page="index">Home</a></li>
+      <li><a href="about.html"    data-page="about">About</a></li>
+      <li><a href="skills.html"   data-page="skills">Skills</a></li>
+      <li><a href="journey.html"  data-page="journey">Journey</a></li>
+      <li><a href="projects.html" data-page="projects">Projects</a></li>
+      <li><a href="research.html" data-page="research">Research</a></li>
+      <li><a href="social.html"   data-page="social">Social</a></li>
+      <li><a href="blog.html"     data-page="blog">Blog</a></li>
+      <li><a href="contact.html"  data-page="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" role="switch">
+        <span class="toggle-thumb">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+      </button>
+      <a href="contact.html" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home-hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content z1">
+    <div class="hero-badge fade-up">
+      <span class="badge badge-live">Available for opportunities</span>
+    </div>
+    <h1 class="hero-name fade-up delay-1">
+      <span class="first">SAI PAVAN </span><span class="last">ADITYA</span><br>
+      <span class="first">MANTRIPRAGADA</span>
+    </h1>
+    <p class="hero-typed-wrap fade-up delay-2">
+      <span id="typed-text"></span><span id="typed-cursor"></span>
+    </p>
+    <p class="hero-tagline fade-up delay-3">
+      Architecting <strong>privacy-first, production-grade AI</strong> systems that transform
+      raw data into strategic assets. Expert in Federated Learning, LLMs, and scalable
+      cloud data pipelines at enterprise scale.
+    </p>
+    <div class="hero-actions fade-up delay-4">
+      <a href="projects.html" class="btn btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        View Projects
+      </a>
+      <a href="about.html" class="btn btn-outline">About Me</a>
+      <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <!-- Stats -->
+    <div class="hero-stats stats-row fade-up delay-4">
+      <div class="stat-item">
+        <div class="stat-num"><span data-count="4">0</span><span>+</span></div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span data-count="40">0</span><span>%</span></div>
+        <div class="stat-lbl">Latency Reduced</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span data-count="4">0</span></div>
+        <div class="stat-lbl">Certifications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span data-count="3">0</span></div>
+        <div class="stat-lbl">Publications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span data-count="92">0</span><span>%</span></div>
+        <div class="stat-lbl">FL Model Accuracy</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint z1">Scroll</div>
+</section>
+
+<!-- QUICK INTRO STRIP -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="grid-auto" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">
+      <div class="card card-lift fade-up">
+        <div style="font-size:1.6rem;margin-bottom:.75rem">🧠</div>
+        <h3 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem">AI & ML Research</h3>
+        <p style="font-size:.84rem;color:var(--text2);line-height:1.7">Federated Learning, Differential Privacy, LLM fine-tuning with LoRA, RAG pipelines.</p>
+      </div>
+      <div class="card card-lift fade-up delay-1">
+        <div style="font-size:1.6rem;margin-bottom:.75rem">⚙️</div>
+        <h3 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem">MLOps & Production</h3>
+        <p style="font-size:.84rem;color:var(--text2);line-height:1.7">CI/CD for ML, model drift monitoring, Kubernetes, MLflow, SageMaker, Docker.</p>
+      </div>
+      <div class="card card-lift fade-up delay-2">
+        <div style="font-size:1.6rem;margin-bottom:.75rem">☁️</div>
+        <h3 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem">Data Engineering</h3>
+        <p style="font-size:.84rem;color:var(--text2);line-height:1.7">Snowflake, SnapLogic, Spark, AWS pipelines. From raw ingestion to analytics-ready data.</p>
+      </div>
+      <div class="card card-lift fade-up delay-3">
+        <div style="font-size:1.6rem;margin-bottom:.75rem">🔒</div>
+        <h3 style="font-size:.95rem;font-weight:700;margin-bottom:.4rem">Privacy-First AI</h3>
+        <p style="font-size:.84rem;color:var(--text2);line-height:1.7">GDPR/SOC2-compliant ML systems with epsilon-budget tracking and decentralised training.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p>Built by <span>Sai Pavan Aditya Mantripragada</span> · AI/ML Engineer</p>
+    <div class="footer-links">
+      <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2025 · Privacy-First · Production-Grade</p>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

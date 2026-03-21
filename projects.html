@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Sai Pavan Aditya</title>
+  <script>(function(){ document.documentElement.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'dark'); })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">SAI<span class="accent">.</span>PAVAN</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"    data-page="index">Home</a></li>
+      <li><a href="about.html"    data-page="about">About</a></li>
+      <li><a href="skills.html"   data-page="skills">Skills</a></li>
+      <li><a href="journey.html"  data-page="journey">Journey</a></li>
+      <li><a href="projects.html" data-page="projects">Projects</a></li>
+      <li><a href="research.html" data-page="research">Research</a></li>
+      <li><a href="social.html"   data-page="social">Social</a></li>
+      <li><a href="blog.html"     data-page="blog">Blog</a></li>
+      <li><a href="contact.html"  data-page="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" role="switch">
+        <span class="toggle-thumb">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+      </button>
+      <a href="contact.html" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero z1">
+  <div class="page-label fade-up">Featured Work</div>
+  <h1 class="page-title fade-up delay-1">Projects &amp; <span class="highlight">Impact</span></h1>
+  <p class="page-subtitle fade-up delay-2">End-to-end ML systems — from research prototype to production deployment at enterprise scale.</p>
+</div>
+
+<section class="section z1">
+  <div class="section-inner">
+    <div class="grid-auto" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">
+
+      <!-- Project 1 -->
+      <div class="card card-lg card-lift project-card fade-up">
+        <div class="project-emoji">⚖️</div>
+        <h3>Enterprise RAG Engine for Legal &amp; Patent Intelligence</h3>
+        <div class="project-stack">LangChain · Pinecone · Llama-3 · QLoRA · FastAPI · Docker</div>
+        <p>Architected a Retrieval-Augmented Generation system to automate summarisation of 500k+ patent documents using Vector Databases for sub-second semantic search. Fine-tuned LLMs using QLoRA to improve legal terminology accuracy and reduce hallucination rate by 40% vs. out-of-the-box models. Deployed as a microservice-based architecture for scalable, real-time query handling via an optimised API.</p>
+        <div class="project-footer">
+          <span class="metric-chip green">-60% review time</span>
+          <span class="metric-chip blue">500k+ docs</span>
+          <span class="metric-chip purple">-40% hallucinations</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card card-lg card-lift project-card fade-up delay-1">
+        <div class="project-emoji">🔐</div>
+        <h3>Privacy-Preserving AI Framework (Production-Grade)</h3>
+        <div class="project-stack">PySyft · Federated Learning · Differential Privacy · GDPR · SOC2</div>
+        <p>Developed a decentralised training framework enabling model training on sensitive financial and healthcare datasets while maintaining strict GDPR and SOC2 compliance. Implemented FedAvg algorithms allowing multiple data silos to contribute to a global model without raw data exchange, maintaining 92% accuracy vs. centralised training. Packaged as a reusable Python library with epsilon-budget tracking.</p>
+        <div class="project-footer">
+          <span class="metric-chip green">92% accuracy</span>
+          <span class="metric-chip blue">GDPR + SOC2</span>
+          <span class="metric-chip purple">Zero data leakage</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card card-lg card-lift project-card fade-up delay-2">
+        <div class="project-emoji">🔧</div>
+        <h3>MLOps Pipeline for Real-Time Predictive Maintenance</h3>
+        <div class="project-stack">MLflow · AWS SageMaker · Kubernetes · DVC · CI/CD</div>
+        <p>Engineered a robust MLOps lifecycle automating deployment of predictive models with CI/CD pipelines handling automated retraining on data drift detection. Kubernetes orchestration ensuring 300% surge capacity with low-latency response times. Reduced technical debt by implementing DVC for 100% reproducibility of experiments and seamless rollbacks.</p>
+        <div class="project-footer">
+          <span class="metric-chip green">300% surge capacity</span>
+          <span class="metric-chip blue">100% reproducible</span>
+          <span class="metric-chip purple">Auto-retrain</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="card card-lg card-lift project-card fade-up">
+        <div class="project-emoji">📦</div>
+        <h3>Autonomous Inventory Optimization Engine</h3>
+        <div class="project-stack">PyTorch · Temporal Fusion Transformers · AWS Lambda · Power BI</div>
+        <p>Designed a high-dimensional forecasting engine using Temporal Fusion Transformers, outperforming ARIMA/LSTM baselines by 25% in capturing seasonal demand fluctuations for supply chain logistics. Integrated a serverless inference layer with AWS Lambda, optimising cloud compute costs by 30% while delivering real-time stock-out risk scores to Power BI dashboards for warehouse management teams.</p>
+        <div class="project-footer">
+          <span class="metric-chip green">+25% vs LSTM</span>
+          <span class="metric-chip blue">-30% cloud cost</span>
+          <span class="metric-chip purple">-15% overstock</span>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="card card-lg card-lift project-card fade-up delay-1">
+        <div class="project-emoji">🗺️</div>
+        <h3>Augmented Reality Indoor Navigation System</h3>
+        <div class="project-stack">OpenCV · ARKit · Computer Vision · Feature Extraction</div>
+        <p>Bachelor's capstone: integrated Computer Vision (OpenCV) with ARKit for real-time spatial mapping. Developed offline-capable indoor navigation using feature extraction and localization algorithms, enabling accurate positioning without network connectivity. Research published in IRJMETS Vol. 3 (2021).</p>
+        <div class="project-footer">
+          <span class="metric-chip green">Published 2021</span>
+          <span class="metric-chip blue">Offline capable</span>
+          <span class="metric-chip purple">Real-time mapping</span>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="card card-lg card-lift project-card fade-up delay-2">
+        <div class="project-emoji">🏢</div>
+        <h3>Real Estate Analytics Suite @ Zensar</h3>
+        <div class="project-stack">Snowflake · SnapLogic · Power BI · Salesforce · Python · Predictive ML</div>
+        <p>Architected end-to-end pipelines ingesting high-velocity Salesforce CRM data into Snowflake, reducing data latency by 40% and accelerating executive reporting. Delivered high-fidelity dashboards for portfolio performance analytics. Engineered the Salesforce–Inspace data bridge creating a unified source of truth for real-time decisions.</p>
+        <div class="project-footer">
+          <span class="metric-chip green">-40% latency</span>
+          <span class="metric-chip blue">Real-time insights</span>
+          <span class="metric-chip purple">Unified data source</span>
+        </div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="card card-lg card-lift project-card fade-up">
+        <div class="project-emoji">📉</div>
+        <h3>Customer Churn Prediction Framework @ Greene King</h3>
+        <div class="project-stack">XGBoost · Random Forest · Scikit-Learn · Python · AWS</div>
+        <p>Architected a predictive retention framework to identify at-risk customer accounts across regional hubs. Combined XGBoost and Random Forest ensemble methods with behavioural feature engineering to achieve a 12% reduction in customer churn through proactive, data-informed intervention strategies delivered to the marketing team.</p>
+        <div class="project-footer">
+          <span class="metric-chip green">-12% churn</span>
+          <span class="metric-chip blue">+18% conversions</span>
+          <span class="metric-chip purple">Proactive alerts</span>
+        </div>
+      </div>
+
+      <!-- Project 8: Open source DP -->
+      <div class="card card-lg card-lift project-card fade-up delay-1">
+        <div class="project-emoji">🛡️</div>
+        <h3>Differential Privacy Python Utility (Open Source)</h3>
+        <div class="project-stack">Python · PySyft · Differential Privacy · GDPR · NumPy</div>
+        <p>Actively developing a Python-based open-source utility for Differential Privacy to assist data engineers in GDPR-compliant data masking. Provides automated noise-injection, epsilon-budget tracking, and membership inference attack prevention. Upcoming publication tie-in planned for 2026. Enables privacy-preserving analytics without sacrificing data utility.</p>
+        <div class="project-footer">
+          <span class="metric-chip green">Open Source</span>
+          <span class="metric-chip blue">GDPR Ready</span>
+          <span class="metric-chip orange">In Development</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>Built by <span>Sai Pavan Aditya Mantripragada</span> · AI/ML Engineer</p>
+    <div class="footer-links">
+      <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2025</p>
+  </div>
+</footer>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
