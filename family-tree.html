@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mantripragada Vamsavrukshamu — The Lingagiri Mantripragada family tree spanning 7 generations from 1816." />
+  <title>Vamsavrukshamu | Mantripragada Family Tree</title>
+  <script>(function(){ document.documentElement.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'dark'); })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* ── Family Tree Page Styles ── */
+    .ft-hero {
+      padding: calc(var(--nav-h) + 4rem) 1.5rem 3rem;
+      text-align: center;
+    }
+    .ft-hero-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(124,106,247,.1);
+      border: 1px solid rgba(124,106,247,.25);
+      border-radius: 999px;
+      padding: .3rem .9rem;
+      margin-bottom: 1rem;
+    }
+    .ft-hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: .75rem;
+    }
+    .ft-hero h1 .highlight { color: var(--accent); }
+    .ft-hero p {
+      color: var(--text2);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Stats strip */
+    .ft-stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ft-stat {
+      text-align: center;
+      min-width: 100px;
+    }
+    .ft-stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .ft-stat-label {
+      font-size: .75rem;
+      color: var(--text2);
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* Legend */
+    .ft-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem 1.25rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      justify-content: center;
+    }
+    .ft-legend-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .78rem;
+      color: var(--text2);
+    }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-dot.male    { background: #3b82f6; }
+    .legend-dot.female  { background: #ec4899; }
+    .legend-dot.deceased{ background: var(--text3); }
+    .legend-dot.adopted { background: var(--orange); border: 2px dashed var(--orange); background: transparent; }
+    .legend-dot.self    { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+    /* ── TREE CONTAINER ── */
+    .ft-section {
+      padding: 2.5rem 1rem;
+    }
+    .ft-section-title {
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .4rem;
+    }
+    .ft-section-sub {
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    /* Ancestors vertical timeline */
+    .ancestors-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .ancestor-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .ancestor-connector {
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+      flex-shrink: 0;
+    }
+    .ancestor-connector.branch-point {
+      position: relative;
+    }
+
+    /* Person Card */
+    .pc {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: .9rem 1.2rem;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      cursor: pointer;
+      max-width: 280px;
+      width: 100%;
+    }
+    .pc:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--glow);
+      border-color: var(--accent);
+    }
+    .pc.male   { border-left: 3px solid #3b82f6; }
+    .pc.female { border-left: 3px solid #ec4899; }
+    .pc.deceased { opacity: .65; }
+    .pc.adopted { border-style: dashed; border-color: var(--orange); }
+    .pc.self {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(124,106,247,.08) 100%);
+      box-shadow: 0 0 20px rgba(124,106,247,.2);
+    }
+    .pc-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .8rem;
+      margin: 0 auto .6rem;
+    }
+    .pc.male   .pc-avatar { background: rgba(59,130,246,.15); color: #60a5fa; }
+    .pc.female .pc-avatar { background: rgba(236,72,153,.15); color: #f472b6; }
+    .pc.deceased .pc-avatar { background: rgba(90,90,122,.15); color: var(--text3); }
+    .pc.self   .pc-avatar { background: rgba(124,106,247,.2); color: var(--accent3); }
+    .pc-name {
+      font-size: .9rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: .25rem;
+    }
+    .pc-year {
+      font-size: .72rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent3);
+      margin-bottom: .25rem;
+    }
+    .pc-spouse {
+      font-size: .73rem;
+      color: var(--text2);
+      margin-bottom: .2rem;
+    }
+    .pc-note {
+      font-size: .68rem;
+      color: var(--text3);
+      font-style: italic;
+    }
+    .pc-badge {
+      position: absolute;
+      top: -8px; right: 8px;
+      font-size: .6rem;
+      font-weight: 700;
+      padding: .15rem .5rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .pc-badge.adopted-badge { background: rgba(251,146,60,.15); color: var(--orange); border: 1px solid var(--orange); }
+    .pc-badge.self-badge { background: rgba(124,106,247,.2); color: var(--accent); border: 1px solid var(--accent); }
+    .pc-badge.deceased-badge { background: rgba(90,90,122,.15); color: var(--text3); border: 1px solid var(--text3); }
+
+    /* Couple row */
+    .couple-row {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .couple-card { max-width: 240px; flex: 1 1 200px; }
+    .couple-sep {
+      display: flex;
+      align-items: center;
+      padding: 0 .5rem;
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 300;
+      align-self: center;
+    }
+
+    /* Siblings row */
+    .siblings-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding: .5rem;
+      position: relative;
+    }
+    .siblings-row::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--accent2), transparent);
+    }
+
+    /* Branch divider */
+    .branch-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .branch-col {
+      flex: 1 1 340px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .branch-header {
+      padding: 1rem 1.5rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .branch-header h3 {
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: .2rem;
+    }
+    .branch-header p {
+      font-size: .75rem;
+      color: var(--text2);
+    }
+    .branch-body {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: .75rem;
+    }
+    .branch-body .pc {
+      max-width: 100%;
+    }
+
+    /* Grandchildren grid */
+    .grandchildren-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .gc-group {
+      margin-bottom: 2rem;
+    }
+    .gc-group-title {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text2);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .gc-group-title::before {
+      content: '';
+      width: 3px; height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .gc-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+    .gc-cards .pc { max-width: 200px; }
+
+    /* Generation label pill */
+    .gen-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent3);
+      background: rgba(124,106,247,.08);
+      border: 1px solid rgba(124,106,247,.2);
+      border-radius: 999px;
+      padding: .25rem .75rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Detail Modal */
+    .ft-modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.7);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+      padding: 1rem;
+    }
+    .ft-modal-overlay.open {
+      opacity: 1; pointer-events: all;
+    }
+    .ft-modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      max-width: 420px; width: 100%;
+      padding: 1.75rem;
+      position: relative;
+      box-shadow: var(--shadow);
+      transform: translateY(20px);
+      transition: transform .25s;
+    }
+    .ft-modal-overlay.open .ft-modal { transform: translateY(0); }
+    .ft-modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--text2);
+      cursor: pointer;
+    }
+    .ft-modal-close:hover { color: var(--text); background: var(--border); }
+    .ft-modal-gen { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+    .ft-modal-name { font-size: 1.4rem; font-weight: 800; margin-bottom: .2rem; }
+    .ft-modal-years { font-size: .8rem; font-family: 'JetBrains Mono', monospace; color: var(--accent3); margin-bottom: 1rem; }
+    .ft-modal-row { display: flex; gap: .5rem; margin-bottom: .5rem; align-items: flex-start; }
+    .ft-modal-row-label { font-size: .72rem; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; min-width: 70px; padding-top: .1rem; }
+    .ft-modal-row-val { font-size: .85rem; color: var(--text2); }
+
+    /* Zoom controls */
+    .ft-zoom-bar {
+      position: sticky; bottom: 1.5rem;
+      display: flex; justify-content: center; gap: .5rem;
+      z-index: 10; pointer-events: none;
+    }
+    .ft-zoom-btn {
+      pointer-events: all;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .5rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all .2s;
+      box-shadow: var(--shadow);
+    }
+    .ft-zoom-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Scroll hint */
+    .scroll-hint {
+      text-align: center;
+      font-size: .72rem;
+      color: var(--text3);
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+    }
+
+    /* Section divider */
+    .section-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+
+    /* Origins box */
+    .origins-box {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .origins-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+      color: var(--accent3);
+    }
+    .origins-box p {
+      font-size: .87rem;
+      color: var(--text2);
+      line-height: 1.75;
+    }
+
+    @media(max-width: 600px) {
+      .couple-card { flex: 1 1 100%; }
+      .couple-sep { padding: .25rem 0; }
+      .branch-body { grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); }
+      .gc-cards .pc { max-width: 100%; flex: 1 1 140px; }
+    }
+  </style>
+</head>
+<body>
+<canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">SAI<span class="accent">.</span>PAVAN</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"        data-page="index">Home</a></li>
+      <li><a href="about.html"        data-page="about">About</a></li>
+      <li><a href="skills.html"       data-page="skills">Skills</a></li>
+      <li><a href="journey.html"      data-page="journey">Journey</a></li>
+      <li><a href="projects.html"     data-page="projects">Projects</a></li>
+      <li><a href="research.html"     data-page="research">Research</a></li>
+      <li><a href="social.html"       data-page="social">Social</a></li>
+      <li><a href="blog.html"         data-page="blog">Blog</a></li>
+      <li><a href="contact.html"      data-page="contact">Contact</a></li>
+      <li><a href="family-tree.html"  data-page="family-tree">Family</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" role="switch">
+        <span class="toggle-thumb">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+      </button>
+      <a href="contact.html" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="ft-hero z1 fade-up">
+  <div class="ft-hero-label">Lingagiri Mantripragada</div>
+  <h1>మంత్రిప్రగడ వారి <span class="highlight">వంశవృక్షము</span></h1>
+  <p>A seven-generation record of the Mantripragada family, tracing lineage from the founding ancestor Narasimha Rao (c. 1816) through to the present day.</p>
+</div>
+
+<!-- STATS -->
+<div class="ft-stats fade-up">
+  <div class="ft-stat"><div class="ft-stat-num">7</div><div class="ft-stat-label">Generations</div></div>
+  <div class="ft-stat"><div class="ft-stat-num">43+</div><div class="ft-stat-label">Members</div></div>
+  <div class="ft-stat"><div class="ft-stat-num">1816</div><div class="ft-stat-label">From Year</div></div>
+  <div class="ft-stat"><div class="ft-stat-num">200+</div><div class="ft-stat-label">Years of History</div></div>
+</div>
+
+<!-- LEGEND -->
+<div class="ft-legend">
+  <span style="font-size:.75rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Legend:</span>
+  <div class="ft-legend-item"><div class="legend-dot male"></div> Male</div>
+  <div class="ft-legend-item"><div class="legend-dot female"></div> Female</div>
+  <div class="ft-legend-item"><div class="legend-dot deceased"></div> Deceased</div>
+  <div class="ft-legend-item"><div class="legend-dot adopted"></div> Adopted</div>
+  <div class="ft-legend-item"><div class="legend-dot self"></div> Sai Pavan Aditya</div>
+</div>
+
+<!-- ORIGINS NOTE -->
+<section class="ft-section z1">
+  <div class="origins-box fade-up">
+    <h3>Origins · Lingagiri Connection</h3>
+    <p>
+      The Mantripragada family traces its roots to <strong>Lingagiri (Lingairi)</strong>. The founding
+      ancestor documented in family records is <strong>Mantripragada Narasimha Rao (born c. 1816,
+      Dhatha Nama Samvatsara, Vaishakha Pournami)</strong>, referred to as the <em>Mula Purusha</em>
+      (founding father). A significant chapter involves the adoption of <strong>Venkatrama Rao
+      (Ramanuja Rao)</strong> from Lingagiri into the family, which linked the Lingagiri line
+      to the Mantripragada household. The family is also associated with the Kankipati and
+      Aandallu communities through marital bonds.
+    </p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1: MAIN LINEAGE (G1 – G4)
+════════════════════════════════════════════ -->
+<section class="ft-section z1">
+  <div class="ft-section-title">Founding Lineage</div>
+  <div class="ft-section-sub">Generation I – IV · <span style="color:var(--text2);font-weight:400">1816 – 1920</span></div>
+
+  <div class="ancestors-flow">
+
+    <!-- G1: Narasimha Rao (1816) -->
+    <div class="ancestor-step fade-up">
+      <div class="gen-pill">Generation I · Mula Purusha</div>
+      <div class="couple-row">
+        <div class="pc male couple-card"
+          onclick="openModal('Mantripragada Narasimha Rao','Generation I','b. 1816 (Dhatha Nama Samvatsara, Vaishakha Pournami)','Mateti Lachamma Garu','Son: Ramaiah Garu','Founding ancestor — Mula Purusha — from Lingairi (Lingagiri). The first documented patriarch of the Mantripragada family.',null,null)">
+          <div class="pc-badge self-badge">Mula Purusha</div>
+          <div class="pc-avatar">NR</div>
+          <div class="pc-name">Mantripragada Narasimha Rao</div>
+          <div class="pc-year">b. 1816</div>
+          <div class="pc-note">Founding ancestor · From Lingairi</div>
+        </div>
+        <div class="couple-sep">×</div>
+        <div class="pc female couple-card"
+          onclick="openModal('Mateti Lachamma Garu','Generation I (Spouse)','—','—','—','Wife of Mantripragada Narasimha Rao, the founding patriarch.',null,null)">
+          <div class="pc-avatar">LG</div>
+          <div class="pc-name">Mateti Lachamma Garu</div>
+          <div class="pc-note">Wife of founding ancestor</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ancestor-connector"></div>
+
+    <!-- G2: Ramaiah Garu (1842) -->
+    <div class="ancestor-step fade-up delay-1">
+      <div class="gen-pill">Generation II</div>
+      <div class="couple-row">
+        <div class="pc male couple-card"
+          onclick="openModal('Ramaiah Garu','Generation II','b. 1842 (Subhakrutha Nama Samvatsara, Shravana Bahula Sapthami)','Venkatamma Garu','Sons: Narasimha Rao (1872), Venkaiah (1876)','Son of Mantripragada Narasimha Rao and Mateti Lachamma Garu.',null,null)">
+          <div class="pc-avatar">RG</div>
+          <div class="pc-name">Ramaiah Garu</div>
+          <div class="pc-year">b. 1842</div>
+        </div>
+        <div class="couple-sep">×</div>
+        <div class="pc female couple-card"
+          onclick="openModal('Venkatamma Garu','Generation II (Spouse)','—','—','—','Wife of Ramaiah Garu. Together they had two sons.',null,null)">
+          <div class="pc-avatar">VG</div>
+          <div class="pc-name">Venkatamma Garu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ancestor-connector"></div>
+
+    <!-- G3: Two brothers -->
+    <div class="ancestor-step fade-up delay-2">
+      <div class="gen-pill">Generation III · Two Brothers</div>
+      <div class="siblings-row" style="padding-top:1.5rem">
+        <div class="pc male"
+          onclick="openModal('Narasimha Rao','Generation III','b. 1872 (Angirasa Nama Samvatsara, Ashwayuja Pournami)','Mangamma Garu','Adopted son: Venkatrama Rao (Ramanuja Rao) from Lingagiri','Elder son of Ramaiah Garu. Venkatrama Rao was adopted into his household from Lingagiri.',null,null)">
+          <div class="pc-avatar">NR</div>
+          <div class="pc-name">Narasimha Rao</div>
+          <div class="pc-year">b. 1872</div>
+          <div class="pc-spouse">× Mangamma Garu</div>
+          <div class="pc-note">Adopted Venkatrama Rao</div>
+        </div>
+        <div class="pc male"
+          onclick="openModal('Venkaiah','Generation III','b. 1876 (Dhatha Nama Samvatsara, Shravana Bahula Sapthami)','Kotharu Seshamma Garu','Adopted son: Narasimha Rao (1923) — son of Venkatrama Rao','Younger son of Ramaiah Garu. Adopted Narasimha Rao from Venkatrama Rao&#39;s family.',null,null)">
+          <div class="pc-avatar">VK</div>
+          <div class="pc-name">Venkaiah</div>
+          <div class="pc-year">b. 1876</div>
+          <div class="pc-spouse">× Kotharu Seshamma Garu</div>
+          <div class="pc-note">Adopted Narasimha Rao (1923)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ancestor-connector"></div>
+
+    <!-- G4: Venkatrama Rao -->
+    <div class="ancestor-step fade-up delay-3">
+      <div class="gen-pill">Generation IV · Adopted from Lingagiri</div>
+      <div class="couple-row">
+        <div class="pc male adopted couple-card"
+          onclick="openModal('Venkatrama Rao (Ramanuja Rao)','Generation IV','b. 1901','Radhamma Garu','Children (4): Seetha Ram Rao (1920), Narasimha Rao (1923), Kamalamma (1928), Sekunthala (1931)','Adopted from Lingagiri into the Mantripragada household (Narasimha Rao 1872). Birth name Ramanuja Rao. His sister Radhamma Garu was the first wife of Palivela Annama Raju of Gowridevipeta.',null,null)">
+          <div class="pc-badge adopted-badge">Adopted</div>
+          <div class="pc-avatar">VR</div>
+          <div class="pc-name">Venkatrama Rao</div>
+          <div class="pc-year">b. 1901</div>
+          <div class="pc-note">Also known as Ramanuja Rao</div>
+        </div>
+        <div class="couple-sep">×</div>
+        <div class="pc female couple-card"
+          onclick="openModal('Radhamma Garu','Generation IV (Spouse)','—','—','—','Wife of Venkatrama Rao (Ramanuja Rao). Together they had 4 children.',null,null)">
+          <div class="pc-avatar">RD</div>
+          <div class="pc-name">Radhamma Garu</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /ancestors-flow -->
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2: G5 — Four Children of Venkatrama Rao
+════════════════════════════════════════════ -->
+<section class="ft-section z1">
+  <div class="ft-section-title">Generation V</div>
+  <div class="ft-section-sub">Children of Venkatrama Rao · <span style="color:var(--text2);font-weight:400">1920 – 1931</span></div>
+
+  <div class="siblings-row fade-up" style="max-width:900px;margin:0 auto;padding-top:2rem">
+    <div class="pc male"
+      onclick="openModal('Seetha Ram Rao','Generation V','b. 1920','Gottuparthi Raghavamma','10 children: 2 sons (Narasimha Rao, Srirama Rao) + 8 daughters (Radhamma, Palivela Malathi, Thotacharla Prabhavathi, Behara Vijaya Bharathi, M. Satyavathi, Ayyadevara Vara Lakshmi, Gottuparthi Lalitha, Parvathi)','Elder son of Venkatrama Rao and Radhamma Garu.',null,null)">
+      <div class="pc-avatar">SR</div>
+      <div class="pc-name">Seetha Ram Rao</div>
+      <div class="pc-year">b. 1920</div>
+      <div class="pc-spouse">× Gottuparthi Raghavamma</div>
+      <div class="pc-note">10 children</div>
+    </div>
+    <div class="pc male adopted"
+      onclick="openModal('Narasimha Rao','Generation V','b. 1923 (Rudhirodgari Nama Samvatsara, Vaishakha Pournami)','Kotharu Venkata Ramanamma (d. 29 Mar 1972, Chaitra Pournami)','13 children — see Generation VI-B section below','Son of Venkatrama Rao; given in adoption to Venkaiah (uncle, Generation III). Wife was D/o Appa Rao Kukunoor.',null,null)">
+      <div class="pc-badge adopted-badge">Adopted to Venkaiah</div>
+      <div class="pc-avatar">NR</div>
+      <div class="pc-name">Narasimha Rao</div>
+      <div class="pc-year">b. 1923</div>
+      <div class="pc-spouse">× Kotharu Venkata Ramanamma</div>
+      <div class="pc-note">13 children</div>
+    </div>
+    <div class="pc female"
+      onclick="openModal('Kamalamma','Generation V','b. 1928','Kondapalli Subba Rao','—','Daughter of Venkatrama Rao and Radhamma Garu.',null,null)">
+      <div class="pc-avatar">KA</div>
+      <div class="pc-name">Kamalamma</div>
+      <div class="pc-year">b. 1928</div>
+      <div class="pc-spouse">w/o Kondapalli Subba Rao</div>
+    </div>
+    <div class="pc female deceased"
+      onclick="openModal('Sekunthala','Generation V','b. 1931','—','—','Daughter of Venkatrama Rao and Radhamma Garu. Died unmarried.',null,null)">
+      <div class="pc-badge deceased-badge">Died unmarried</div>
+      <div class="pc-avatar">SK</div>
+      <div class="pc-name">Sekunthala</div>
+      <div class="pc-year">b. 1931</div>
+      <div class="pc-note">Avivahitha · Deceased</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3: G6 — Two Branches
+════════════════════════════════════════════ -->
+<section class="ft-section z1">
+  <div class="ft-section-title">Generation VI</div>
+  <div class="ft-section-sub">Two Branches · <span style="color:var(--text2);font-weight:400">23 Members</span></div>
+
+  <div class="branch-row fade-up">
+
+    <!-- BRANCH A: Seetha Ram Rao (10 children) -->
+    <div class="branch-col">
+      <div class="branch-header">
+        <h3>Branch A · Seetha Ram Rao's Children</h3>
+        <p>10 children (2 sons · 8 daughters) — wife: Gottuparthi Raghavamma</p>
+      </div>
+      <div class="branch-body">
+
+        <div class="pc male"
+          onclick="openModal('Pantripragada Narasimha Rao','Generation VI-A (Son of Seetha Ram Rao)','—','Kondapalli Auradha','—','Son of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">NR</div>
+          <div class="pc-name">Narasimha Rao</div>
+          <div class="pc-spouse">× Kondapalli Auradha</div>
+        </div>
+
+        <div class="pc male deceased"
+          onclick="openModal('Srirama Rao','Generation VI-A (Son of Seetha Ram Rao)','—','—','—','Son of Seetha Ram Rao. Died unmarried.',null,null)">
+          <div class="pc-badge deceased-badge">Died unmarried</div>
+          <div class="pc-avatar">SR</div>
+          <div class="pc-name">Srirama Rao</div>
+          <div class="pc-note">Avivahithudu · Deceased</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Radhamma','Generation VI-A (Daughter of Seetha Ram Rao)','—','Kondapalli Venkateswar Rao','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">RD</div>
+          <div class="pc-name">Radhamma</div>
+          <div class="pc-spouse">w/o Kondapalli Venkateswar Rao</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Palivela Malathi','Generation VI-A (Daughter of Seetha Ram Rao)','—','Durga Prasad (Peda Ramama)','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">PM</div>
+          <div class="pc-name">Palivela Malathi</div>
+          <div class="pc-spouse">w/o Durga Prasad</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Thotacharla Prabhavathi','Generation VI-A (Daughter of Seetha Ram Rao)','—','Babu Rao','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">TP</div>
+          <div class="pc-name">Thotacharla Prabhavathi</div>
+          <div class="pc-spouse">w/o Babu Rao</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Behara Vijaya Bharathi','Generation VI-A (Daughter of Seetha Ram Rao)','—','Subrahmanyam','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">BV</div>
+          <div class="pc-name">Vijaya Bharathi</div>
+          <div class="pc-spouse">w/o Subrahmanyam</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('M. Satyavathi','Generation VI-A (Daughter of Seetha Ram Rao)','—','Veerabhadra Rao','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">SV</div>
+          <div class="pc-name">M. Satyavathi</div>
+          <div class="pc-spouse">w/o Veerabhadra Rao</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Ayyadevara Vara Lakshmi','Generation VI-A (Daughter of Seetha Ram Rao)','—','Satyanaraya','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">VL</div>
+          <div class="pc-name">Vara Lakshmi</div>
+          <div class="pc-spouse">w/o Satyanaraya</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Gottuparthi Lalitha','Generation VI-A (Daughter of Seetha Ram Rao)','—','Peda Babu Gangaram','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma.',null,null)">
+          <div class="pc-avatar">GL</div>
+          <div class="pc-name">Gottuparthi Lalitha</div>
+          <div class="pc-spouse">w/o Peda Babu Gangaram</div>
+        </div>
+
+        <div class="pc female deceased"
+          onclick="openModal('Parvathi','Generation VI-A (Daughter of Seetha Ram Rao)','—','—','—','Daughter of Seetha Ram Rao and Gottuparthi Raghavamma. Died unmarried.',null,null)">
+          <div class="pc-badge deceased-badge">Died unmarried</div>
+          <div class="pc-avatar">PV</div>
+          <div class="pc-name">Parvathi</div>
+          <div class="pc-note">Avivahitha · Deceased</div>
+        </div>
+
+      </div><!-- /branch-body A -->
+    </div><!-- /branch-col A -->
+
+    <!-- BRANCH B: Narasimha Rao (1923) — 13 children -->
+    <div class="branch-col">
+      <div class="branch-header">
+        <h3>Branch B · Narasimha Rao's Children</h3>
+        <p>13 children (6 sons · 7 daughters) — wife: Kotharu Venkata Ramanamma (d. 1972)</p>
+      </div>
+      <div class="branch-body">
+
+        <div class="pc female deceased"
+          onclick="openModal('Seshamma','Generation VI-B (Daughter of Narasimha Rao 1923)','b. 1947 · d. at 13 years','—','—','Daughter of Narasimha Rao (1923) and Kotharu Venkata Ramanamma. Died in childhood at age 13.',null,null)">
+          <div class="pc-badge deceased-badge">d. age 13</div>
+          <div class="pc-avatar">SS</div>
+          <div class="pc-name">Seshamma</div>
+          <div class="pc-year">1947</div>
+        </div>
+
+        <div class="pc male deceased"
+          onclick="openModal('Venkateswar Rao','Generation VI-B (Son of Narasimha Rao 1923)','b. 1948 · d. at 3 years','—','—','Son of Narasimha Rao (1923) and Kotharu Venkata Ramanamma. Died in early childhood at age 3.',null,null)">
+          <div class="pc-badge deceased-badge">d. age 3</div>
+          <div class="pc-avatar">VR</div>
+          <div class="pc-name">Venkateswar Rao</div>
+          <div class="pc-year">1948</div>
+        </div>
+
+        <div class="pc male deceased"
+          onclick="openModal('Bhavani Shankar Rao','Generation VI-B (Son of Narasimha Rao 1923)','b. 1950 · d. 2006','Gottuparthi Usha (D/o Subba Rao, Advocate, Yellendu)','Children: Ponna Bala Tripura Sundari, Neeraja, Syam Prasad (Babu)','Son of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-badge deceased-badge">1950 – 2006</div>
+          <div class="pc-avatar">BS</div>
+          <div class="pc-name">Bhavani Shankar Rao</div>
+          <div class="pc-year">1950 – 2006</div>
+          <div class="pc-spouse">× Gottuparthi Usha</div>
+          <div class="pc-note">3 children</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Lakshmi Kantha','Generation VI-B (Daughter of Narasimha Rao 1923)','b. 1952','Inavolu Purna Chandar Rao','—','Daughter of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">LK</div>
+          <div class="pc-name">Lakshmi Kantha</div>
+          <div class="pc-year">b. 1952</div>
+          <div class="pc-spouse">w/o Inavolu Purna Chandar Rao</div>
+        </div>
+
+        <div class="pc male"
+          onclick="openModal('Jagan Mohan Rao','Generation VI-B (Son of Narasimha Rao 1923)','b. 1954','Madiraju Vanisree (D/o Chiranjeeva Rao)','Children: Sri Pavani, Sri Harini','Son of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">JM</div>
+          <div class="pc-name">Jagan Mohan Rao</div>
+          <div class="pc-year">b. 1954</div>
+          <div class="pc-spouse">× Madiraju Vanisree</div>
+          <div class="pc-note">2 children</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Krishna Veni','Generation VI-B (Daughter of Narasimha Rao 1923)','b. 1956','Kusumanchi Sundara Narasimha Rao','—','Daughter of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">KV</div>
+          <div class="pc-name">Krishna Veni</div>
+          <div class="pc-year">b. 1956</div>
+          <div class="pc-spouse">w/o Kusumanchi Sundara Narasimha Rao</div>
+        </div>
+
+        <div class="pc male deceased"
+          onclick="openModal('Venkata Satyanarayana','Generation VI-B (Son of Narasimha Rao 1923)','b. 1958 · d. 2021','Nanduri Rajani Kumari','Son: MVSBN Anudeep','Son of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-badge deceased-badge">1958 – 2021</div>
+          <div class="pc-avatar">VS</div>
+          <div class="pc-name">Venkata Satyanarayana</div>
+          <div class="pc-year">1958 – 2021</div>
+          <div class="pc-spouse">× Nanduri Rajani Kumari</div>
+          <div class="pc-note">1 son: Anudeep</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Vinayaka Lakshmi','Generation VI-B (Daughter of Narasimha Rao 1923)','b. 1960','Kuricheti Venkata Goury Lakshmana Sankar','—','Daughter of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">VL</div>
+          <div class="pc-name">Vinayaka Lakshmi</div>
+          <div class="pc-year">b. 1960</div>
+          <div class="pc-spouse">w/o Kuricheti V.G. Lakshmana Sankar</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Satyavathi','Generation VI-B (Daughter of Narasimha Rao 1923)','b. 1962','Divan Surya Prakash Rao','—','Daughter of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">SV</div>
+          <div class="pc-name">Satyavathi</div>
+          <div class="pc-year">b. 1962</div>
+          <div class="pc-spouse">w/o Divan Surya Prakash Rao</div>
+        </div>
+
+        <div class="pc male"
+          onclick="openModal('Ganapathi Rao','Generation VI-B (Son of Narasimha Rao 1923)','b. 1964','Jayasree Ponna','Children: Ravi Teja (Sai) wife Sindhu, Lakshmi Saline w/o Divan Sai Saketh','Son of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">GR</div>
+          <div class="pc-name">Ganapathi Rao</div>
+          <div class="pc-year">b. 1964</div>
+          <div class="pc-spouse">× Jayasree Ponna</div>
+          <div class="pc-note">2 children</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Padmavathi','Generation VI-B (Daughter of Narasimha Rao 1923)','b. 1966','Korupolu Satya Prasada Roy','—','Daughter of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">PD</div>
+          <div class="pc-name">Padmavathi</div>
+          <div class="pc-year">b. 1966</div>
+          <div class="pc-spouse">w/o Korupolu Satya Prasada Roy</div>
+        </div>
+
+        <div class="pc female"
+          onclick="openModal('Sekunthala Devi','Generation VI-B (Daughter of Narasimha Rao 1923)','b. 1968','Komaragiri Venkata Gangadhara Purnachandar Rao','—','Daughter of Narasimha Rao (1923) and Kotharu Venkata Ramanamma.',null,null)">
+          <div class="pc-avatar">SD</div>
+          <div class="pc-name">Sekunthala Devi</div>
+          <div class="pc-year">b. 1968</div>
+          <div class="pc-spouse">w/o Komaragiri V.G. Purnachandar Rao</div>
+        </div>
+
+        <div class="pc male"
+          onclick="openModal('Vasudeva Rao','Generation VI-B (Son of Narasimha Rao 1923)','b. 1971','Gottuparthi Padmavathi','Children: Sai Pavan Aditya (42), Lakshmi Satvika (43)','Son of Narasimha Rao (1923) and Kotharu Venkata Ramanamma. Father of the website owner.',null,null)">
+          <div class="pc-avatar">VR</div>
+          <div class="pc-name">Vasudeva Rao</div>
+          <div class="pc-year">b. 1971</div>
+          <div class="pc-spouse">× Gottuparthi Padmavathi</div>
+          <div class="pc-note">Father of Sai Pavan Aditya</div>
+        </div>
+
+      </div><!-- /branch-body B -->
+    </div><!-- /branch-col B -->
+
+  </div><!-- /branch-row -->
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4: G7 — Grandchildren
+════════════════════════════════════════════ -->
+<section class="ft-section z1">
+  <div class="ft-section-title">Generation VII</div>
+  <div class="ft-section-sub">Grandchildren · <span style="color:var(--text2);font-weight:400">Present Generation</span></div>
+
+  <div class="grandchildren-section fade-up">
+
+    <!-- Children of Bhavani Shankar Rao (#22) -->
+    <div class="gc-group">
+      <div class="gc-group-title">Children of Bhavani Shankar Rao × Gottuparthi Usha</div>
+      <div class="gc-cards">
+        <div class="pc female"
+          onclick="openModal('Ponna Bala Tripura Sundari','Generation VII (Daughter of Bhavani Shankar Rao)','—','Bala Krishna','—','Daughter of Bhavani Shankar Rao and Gottuparthi Usha.',null,null)">
+          <div class="pc-avatar">BT</div>
+          <div class="pc-name">Bala Tripura Sundari</div>
+          <div class="pc-spouse">w/o Bala Krishna</div>
+        </div>
+        <div class="pc female"
+          onclick="openModal('Neeraja','Generation VII (Daughter of Bhavani Shankar Rao)','—','Naresh','—','Daughter of Bhavani Shankar Rao and Gottuparthi Usha.',null,null)">
+          <div class="pc-avatar">NJ</div>
+          <div class="pc-name">Neeraja</div>
+          <div class="pc-spouse">w/o Naresh</div>
+        </div>
+        <div class="pc male"
+          onclick="openModal('Syam Prasad (Babu)','Generation VII (Son of Bhavani Shankar Rao)','—','Lakkaraju Supraja','Daughter: Aradhana Amrutha Varshini','Son of Bhavani Shankar Rao and Gottuparthi Usha.',null,null)">
+          <div class="pc-avatar">SP</div>
+          <div class="pc-name">Syam Prasad (Babu)</div>
+          <div class="pc-spouse">× Lakkaraju Supraja</div>
+          <div class="pc-note">Daughter: Aradhana Amrutha Varshini</div>
+        </div>
+        <div class="pc female"
+          onclick="openModal('Aradhana Amrutha Varshini','Generation VIII (Daughter of Syam Prasad)','—','—','—','Daughter of Syam Prasad and Lakkaraju Supraja. Great-grandchild of Bhavani Shankar Rao.',null,null)">
+          <div class="pc-avatar">AA</div>
+          <div class="pc-name">Aradhana Amrutha Varshini</div>
+          <div class="pc-note">Daughter of Syam Prasad</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Children of Jagan Mohan Rao (#24) -->
+    <div class="gc-group">
+      <div class="gc-group-title">Children of Jagan Mohan Rao × Madiraju Vanisree</div>
+      <div class="gc-cards">
+        <div class="pc female"
+          onclick="openModal('Sri Pavani','Generation VII (Daughter of Jagan Mohan Rao)','—','—','—','Daughter of Jagan Mohan Rao and Madiraju Vanisree.',null,null)">
+          <div class="pc-avatar">SPA</div>
+          <div class="pc-name">Sri Pavani</div>
+        </div>
+        <div class="pc female"
+          onclick="openModal('Sri Harini','Generation VII (Daughter of Jagan Mohan Rao)','—','—','—','Daughter of Jagan Mohan Rao and Madiraju Vanisree.',null,null)">
+          <div class="pc-avatar">SH</div>
+          <div class="pc-name">Sri Harini</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Children of Venkata Satyanarayana (#26) -->
+    <div class="gc-group">
+      <div class="gc-group-title">Children of Venkata Satyanarayana × Nanduri Rajani Kumari</div>
+      <div class="gc-cards">
+        <div class="pc male"
+          onclick="openModal('MVSBN Anudeep','Generation VII (Son of Venkata Satyanarayana)','—','—','—','Son of Venkata Satyanarayana (1958–2021) and Nanduri Rajani Kumari.',null,null)">
+          <div class="pc-avatar">AU</div>
+          <div class="pc-name">MVSBN Anudeep</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Children of Ganapathi Rao (#29) -->
+    <div class="gc-group">
+      <div class="gc-group-title">Children of Ganapathi Rao × Jayasree Ponna</div>
+      <div class="gc-cards">
+        <div class="pc male"
+          onclick="openModal('Ravi Teja (Sai)','Generation VII (Son of Ganapathi Rao)','—','Sindhu','Son: Raghavarenya (b. 2020)','Son of Ganapathi Rao and Jayasree Ponna.',null,null)">
+          <div class="pc-avatar">RT</div>
+          <div class="pc-name">Ravi Teja (Sai)</div>
+          <div class="pc-spouse">× Sindhu</div>
+          <div class="pc-note">Son: Raghavarenya (2020)</div>
+        </div>
+        <div class="pc female"
+          onclick="openModal('Lakshmi Saline','Generation VII (Daughter of Ganapathi Rao)','—','Divan Sai Saketh','—','Daughter of Ganapathi Rao and Jayasree Ponna.',null,null)">
+          <div class="pc-avatar">LS</div>
+          <div class="pc-name">Lakshmi Saline</div>
+          <div class="pc-spouse">w/o Divan Sai Saketh</div>
+        </div>
+        <div class="pc male"
+          onclick="openModal('Raghavarenya','Generation VIII (Son of Ravi Teja)','b. 2020','—','—','Son of Ravi Teja and Sindhu. Born 2020.',null,null)">
+          <div class="pc-avatar">RV</div>
+          <div class="pc-name">Raghavarenya</div>
+          <div class="pc-year">b. 2020</div>
+          <div class="pc-note">Son of Ravi Teja & Sindhu</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Children of Vasudeva Rao (#32) — THE PRESENT OWNER -->
+    <div class="gc-group">
+      <div class="gc-group-title">Children of Vasudeva Rao × Gottuparthi Padmavathi</div>
+      <div class="gc-cards">
+        <div class="pc male self"
+          onclick="openModal('Mantripragada Sai Pavan Aditya','Generation VII (Son of Vasudeva Rao)','Present','—','—','Son of Vasudeva Rao and Gottuparthi Padmavathi. AI/ML Engineer. The author of this website.',null,null)">
+          <div class="pc-badge self-badge">You Are Here</div>
+          <div class="pc-avatar">SPA</div>
+          <div class="pc-name">Sai Pavan Aditya</div>
+          <div class="pc-note">AI/ML Engineer · This website</div>
+        </div>
+        <div class="pc female"
+          onclick="openModal('Lakshmi Satvika','Generation VII (Daughter of Vasudeva Rao)','—','—','—','Daughter of Vasudeva Rao and Gottuparthi Padmavathi. Sister of Sai Pavan Aditya.',null,null)">
+          <div class="pc-avatar">LS</div>
+          <div class="pc-name">Lakshmi Satvika</div>
+          <div class="pc-note">Sister of Sai Pavan Aditya</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grandchildren-section -->
+</section>
+
+<!-- FULL GENERATION SUMMARY TABLE -->
+<section class="ft-section section-alt z1" style="background:var(--bg2)">
+  <div class="ft-section-title">Complete Reference</div>
+  <div class="ft-section-sub">All Members by Generation</div>
+  <div style="max-width:900px;margin:0 auto;overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border)">
+          <th style="padding:.75rem .5rem;text-align:left;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.07em;font-size:.7rem">#</th>
+          <th style="padding:.75rem .5rem;text-align:left;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.07em;font-size:.7rem">Name</th>
+          <th style="padding:.75rem .5rem;text-align:left;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.07em;font-size:.7rem">Year</th>
+          <th style="padding:.75rem .5rem;text-align:left;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.07em;font-size:.7rem">Spouse</th>
+          <th style="padding:.75rem .5rem;text-align:left;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.07em;font-size:.7rem">Generation</th>
+        </tr>
+      </thead>
+      <tbody id="memberTable">
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="ft-modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="ft-modal" id="modalBox">
+    <button class="ft-modal-close" onclick="closeModal()">✕</button>
+    <div class="ft-modal-gen" id="mGen"></div>
+    <div class="ft-modal-name" id="mName"></div>
+    <div class="ft-modal-years" id="mYears"></div>
+    <div id="mDetails"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p>Built by <span>Sai Pavan Aditya Mantripragada</span> · AI/ML Engineer</p>
+    <div class="footer-links">
+      <a href="https://github.com/MANTRIPRAGADA-SAI-PAVAN-ADITYA" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/sai-pavan-aditya-mantripragada-0bb033159/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+      <a href="family-tree.html">Family Tree</a>
+    </div>
+    <p>© 2025 · Mantripragada Vamsavrukshamu · Lingagiri</p>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+// ── Modal ──────────────────────────────────────────────────
+function openModal(name, gen, years, spouse, children, bio) {
+  document.getElementById('mName').textContent  = name;
+  document.getElementById('mGen').textContent   = gen;
+  document.getElementById('mYears').textContent = years && years !== '—' ? years : '';
+
+  const rows = [];
+  if (spouse   && spouse   !== '—') rows.push(['Spouse',   spouse]);
+  if (children && children !== '—') rows.push(['Children', children]);
+  if (bio)                           rows.push(['Notes',    bio]);
+
+  document.getElementById('mDetails').innerHTML = rows.map(([label, val]) =>
+    `<div class="ft-modal-row">
+       <div class="ft-modal-row-label">${label}</div>
+       <div class="ft-modal-row-val">${val}</div>
+     </div>`
+  ).join('');
+
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Members table ──────────────────────────────────────────
+const members = [
+  [1,  'Mantripragada Narasimha Rao', '1816',     'Mateti Lachamma Garu',                'Generation I (Mula Purusha)', 'male'],
+  [2,  'Ramaiah Garu',                '1842',     'Venkatamma Garu',                     'Generation II',               'male'],
+  [3,  'Narasimha Rao',               '1872',     'Mangamma Garu',                       'Generation III',              'male'],
+  [4,  'Venkaiah',                    '1876',     'Kotharu Seshamma Garu',               'Generation III',              'male'],
+  [5,  'Venkatrama Rao (Ramanuja Rao)','1901',    'Radhamma Garu',                       'Generation IV (Adopted)',     'male'],
+  [6,  'Seetha Ram Rao',              '1920',     'Gottuparthi Raghavamma',              'Generation V',                'male'],
+  [7,  'Narasimha Rao',               '1923',     'Kotharu Venkata Ramanamma',           'Generation V (Adopted to Venkaiah)', 'male'],
+  [8,  'Kamalamma',                   '1928',     'Kondapalli Subba Rao',                'Generation V',                'female'],
+  [9,  'Sekunthala',                  '1931',     '— (Died unmarried)',                  'Generation V',                'female'],
+  [10, 'Radhamma',                    '—',        'Kondapalli Venkateswar Rao',          'Generation VI-A',             'female'],
+  [11, 'Palivela Malathi',            '—',        'Durga Prasad',                        'Generation VI-A',             'female'],
+  [12, 'Thotacharla Prabhavathi',     '—',        'Babu Rao',                            'Generation VI-A',             'female'],
+  [13, 'Behara Vijaya Bharathi',      '—',        'Subrahmanyam',                        'Generation VI-A',             'female'],
+  [14, 'M. Satyavathi',               '—',        'Veerabhadra Rao',                     'Generation VI-A',             'female'],
+  [15, 'Ayyadevara Vara Lakshmi',     '—',        'Satyanaraya',                         'Generation VI-A',             'female'],
+  [16, 'Narasimha Rao',               '—',        'Kondapalli Auradha',                  'Generation VI-A',             'male'],
+  [17, 'Srirama Rao',                 '—',        '— (Died unmarried)',                  'Generation VI-A',             'male'],
+  [18, 'Gottuparthi Lalitha',         '—',        'Peda Babu Gangaram',                  'Generation VI-A',             'female'],
+  [19, 'Parvathi',                    '—',        '— (Died unmarried)',                  'Generation VI-A',             'female'],
+  [20, 'Seshamma',                    '1947',     '— (Died at 13)',                      'Generation VI-B',             'female'],
+  [21, 'Venkateswar Rao',             '1948',     '— (Died at 3)',                       'Generation VI-B',             'male'],
+  [22, 'Bhavani Shankar Rao',         '1950–2006','Gottuparthi Usha',                    'Generation VI-B',             'male'],
+  [23, 'Lakshmi Kantha',              '1952',     'Inavolu Purna Chandar Rao',           'Generation VI-B',             'female'],
+  [24, 'Jagan Mohan Rao',             '1954',     'Madiraju Vanisree',                   'Generation VI-B',             'male'],
+  [25, 'Krishna Veni',                '1956',     'Kusumanchi Sundara Narasimha Rao',    'Generation VI-B',             'female'],
+  [26, 'Venkata Satyanarayana',       '1958–2021','Nanduri Rajani Kumari',               'Generation VI-B',             'male'],
+  [27, 'Vinayaka Lakshmi',            '1960',     'Kuricheti V.G. Lakshmana Sankar',     'Generation VI-B',             'female'],
+  [28, 'Satyavathi',                  '1962',     'Divan Surya Prakash Rao',             'Generation VI-B',             'female'],
+  [29, 'Ganapathi Rao',               '1964',     'Jayasree Ponna',                      'Generation VI-B',             'male'],
+  [30, 'Padmavathi',                  '1966',     'Korupolu Satya Prasada Roy',          'Generation VI-B',             'female'],
+  [31, 'Sekunthala Devi',             '1968',     'Komaragiri V.G. Purnachandar Rao',    'Generation VI-B',             'female'],
+  [32, 'Vasudeva Rao',                '1971',     'Gottuparthi Padmavathi',              'Generation VI-B',             'male'],
+  [33, 'Ponna Bala Tripura Sundari',  '—',        'Bala Krishna',                        'Generation VII',              'female'],
+  [34, 'Neeraja',                     '—',        'Naresh',                              'Generation VII',              'female'],
+  [35, 'Syam Prasad (Babu)',          '—',        'Lakkaraju Supraja',                   'Generation VII',              'male'],
+  [36, 'Aradhana Amrutha Varshini',   '—',        '—',                                   'Generation VIII',             'female'],
+  [37, 'Sri Pavani',                  '—',        '—',                                   'Generation VII',              'female'],
+  [38, 'Sri Harini',                  '—',        '—',                                   'Generation VII',              'female'],
+  [39, 'MVSBN Anudeep',               '—',        '—',                                   'Generation VII',              'male'],
+  [40, 'Ravi Teja (Sai)',             '—',        'Sindhu',                              'Generation VII',              'male'],
+  [41, 'Lakshmi Saline',              '—',        'Divan Sai Saketh',                    'Generation VII',              'female'],
+  [42, 'Sai Pavan Aditya',            'Present',  '—',                                   'Generation VII ★',            'male'],
+  [43, 'Lakshmi Satvika',             '—',        '—',                                   'Generation VII',              'female'],
+  [44, 'Raghavarenya',                '2020',     '—',                                   'Generation VIII',             'male'],
+];
+
+const tbody = document.getElementById('memberTable');
+members.forEach(([num, name, year, spouse, gen, gender]) => {
+  const isSelf = num === 42;
+  const tr = document.createElement('tr');
+  tr.style.cssText = `border-bottom:1px solid var(--border);${isSelf ? 'background:rgba(124,106,247,.06)' : ''}`;
+  tr.innerHTML = `
+    <td style="padding:.6rem .5rem;color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:.7rem">${num}</td>
+    <td style="padding:.6rem .5rem;font-weight:${isSelf?'700':'500'};color:${isSelf ? 'var(--accent)' : 'var(--text)'}">${name}${isSelf?' ★':''}</td>
+    <td style="padding:.6rem .5rem;color:var(--text2);font-family:'JetBrains Mono',monospace;font-size:.75rem">${year}</td>
+    <td style="padding:.6rem .5rem;color:var(--text2)">${spouse}</td>
+    <td style="padding:.6rem .5rem"><span style="font-size:.68rem;padding:.2rem .5rem;border-radius:999px;background:${gender==='male'?'rgba(59,130,246,.12)':'rgba(236,72,153,.12)'};color:${gender==='male'?'#60a5fa':'#f472b6'}">${gen}</span></td>
+  `;
+  tbody.appendChild(tr);
+});
+
+// ── Mark current nav item ──────────────────────────────────
+document.querySelectorAll('.nav-links a').forEach(a => {
+  if (a.dataset.page === 'family-tree') a.classList.add('active');
+});
+</script>
+</body>
+</html>
