@@ -334,9 +334,34 @@ img{max-width:100%;display:block}
   .tree-row{gap:.75rem}
 }
 
+/* ── PLACEHOLDER NODE ───────────────────────────────── */
+.nc.ph{border:2px dashed rgba(124,106,247,.35);border-top:2px dashed rgba(124,106,247,.5);background:rgba(124,106,247,.04);opacity:.72;cursor:pointer}
+.nc.ph:hover{opacity:1;border-color:var(--accent);box-shadow:var(--glow)}
+.nc.ph .nc-avatar{background:rgba(124,106,247,.08);color:var(--accent);font-size:1.1rem}
+.nc.ph .nc-name{font-size:.76rem;color:var(--text2);line-height:1.4}
+.nc.ph .ph-cta{font-size:.68rem;color:var(--acc3);margin-top:.5rem;font-weight:700;letter-spacing:.04em}
+
+/* ── SUBMIT FAB ─────────────────────────────────────── */
+.fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;align-items:center;gap:.45rem;padding:.65rem 1.2rem;background:linear-gradient(135deg,var(--accent),var(--acc2));color:#fff;border-radius:999px;font-size:.76rem;font-weight:700;letter-spacing:.05em;box-shadow:0 4px 20px rgba(124,106,247,.45);transition:.2s;text-decoration:none;white-space:nowrap}
+.fab:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,106,247,.6);color:#fff}
+.fab svg{flex-shrink:0}
+
+/* ── BRANCH A/B DAUGHTERS SUB-HEADER ─────────────────── */
+.daughters-header{text-align:center;margin:3rem 0 2rem;padding-top:2.5rem;border-top:2px dashed rgba(124,106,247,.15)}
+.daughters-header .dh-label{font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
+.daughters-header .dh-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+.daughters-header .dh-sub{font-size:.8rem;color:var(--text2)}
+
+/* ── GEN VIII SECTION ───────────────────────────────── */
+.gen8-banner{background:linear-gradient(135deg,rgba(240,180,41,.07),rgba(124,106,247,.07));border:1px solid rgba(240,180,41,.2);border-radius:var(--r2);padding:1.25rem 1.5rem;max-width:700px;margin:0 auto 2rem;text-align:center}
+.gen8-banner h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gold);margin-bottom:.35rem}
+.gen8-banner p{font-size:.82rem;color:var(--text2)}
+.gen8-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:1rem;max-width:820px;margin:0 auto}
+.gen8-grid .nc{width:100%}
+
 /* ── PRINT ───────────────────────────────────────────── */
 @media print{
-  .nav,.search-overlay,.modal-overlay,.hero-scroll,.hero-badge{display:none!important}
+  .nav,.search-overlay,.modal-overlay,.hero-scroll,.hero-badge,.fab{display:none!important}
   .hero{min-height:auto;padding:2rem}
   body{background:#fff;color:#000}
   .nc{border:1px solid #999;page-break-inside:avoid}
@@ -354,6 +379,7 @@ img{max-width:100%;display:block}
     <a href="#gen5">Gen V</a>
     <a href="#gen6">Gen VI</a>
     <a href="#gen7">Gen VII</a>
+    <a href="#gen8">Gen VIII</a>
     <a href="#directory">Directory</a>
   </div>
   <div class="nav-right">
@@ -658,6 +684,181 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
+  </div><!-- /gc-section known -->
+
+  <!-- ── BRANCH A DAUGHTERS' FAMILIES ─────────────────── -->
+  <div class="daughters-header">
+    <div class="dh-label">Branch A — Daughters' Families</div>
+    <div class="dh-title">Children of Seetha Ram Rao's Daughters</div>
+    <div class="dh-sub">Details pending · Family members: <a href="#" onclick="openSubmitForm('Branch A');return false" style="color:var(--acc3);font-weight:700">submit yours to appear here →</a></div>
+  </div>
+
+  <div class="gc-section">
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Radhamma (#10) w/o Kondapalli Venkateswar Rao</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-10 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of Radhamma #10')" data-pfparent="Radhamma" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Palivela Malathi (#11) w/o Durga Prasad</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-11 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of Palivela Malathi #11')" data-pfparent="Palivela Malathi" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Thotacharla Prabhavathi (#12) w/o Babu Rao</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-12 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of Thotacharla Prabhavathi #12')" data-pfparent="Thotacharla Prabhavathi" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Behara Vijaya Bharathi (#13) w/o Subrahmanyam</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-13 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of Vijaya Bharathi #13')" data-pfparent="Behara Vijaya Bharathi" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of M. Satyavathi (#14) w/o Veerabhadra Rao</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-14 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of M. Satyavathi #14')" data-pfparent="M. Satyavathi" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Ayyadevara Vara Lakshmi (#15) w/o Satyanaraya</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-15 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of Vara Lakshmi #15')" data-pfparent="Ayyadevara Vara Lakshmi" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Narasimha Rao (#16) × Kondapalli Auradha</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-16 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of Narasimha Rao #16')" data-pfparent="Narasimha Rao (Pantripragada)" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Gottuparthi Lalitha (#18) w/o Peda Babu Gangaram</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brA-18 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch A, child of Gottuparthi Lalitha #18')" data-pfparent="Gottuparthi Lalitha" data-pfbranch="A" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+  </div><!-- /gc-section brA daughters -->
+
+  <!-- ── BRANCH B DAUGHTERS' FAMILIES ─────────────────── -->
+  <div class="daughters-header">
+    <div class="dh-label">Branch B — Daughters' Families</div>
+    <div class="dh-title">Children of Narasimha Rao's Daughters</div>
+    <div class="dh-sub">Details pending · Family members: <a href="#" onclick="openSubmitForm('Branch B');return false" style="color:var(--acc3);font-weight:700">submit yours to appear here →</a></div>
+  </div>
+
+  <div class="gc-section">
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Lakshmi Kantha (#23) w/o Inavolu Purna Chandar Rao</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brB-23 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch B, child of Lakshmi Kantha #23')" data-pfparent="Lakshmi Kantha" data-pfbranch="B" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Krishna Veni (#25) w/o Kusumanchi Sundara Narasimha Rao</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brB-25 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch B, child of Krishna Veni #25')" data-pfparent="Krishna Veni" data-pfbranch="B" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Vinayaka Lakshmi (#27) w/o Kuricheti V.G. Lakshmana Sankar</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brB-27 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch B, child of Vinayaka Lakshmi #27')" data-pfparent="Vinayaka Lakshmi" data-pfbranch="B" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Satyavathi (#28) w/o Divan Surya Prakash Rao</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brB-28 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch B, child of Satyavathi #28')" data-pfparent="Satyavathi" data-pfbranch="B" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Padmavathi (#30) w/o Korupolu Satya Prasada Roy</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brB-30 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch B, child of Padmavathi #30')" data-pfparent="Padmavathi" data-pfbranch="B" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+    <div class="gc-group">
+      <div class="gc-group-label">Children of Sekunthala Devi (#31) w/o Komaragiri V.G. Purnachandar Rao</div>
+      <div class="gc-grid">
+        <!-- INJECT:gen7-brB-31 -->
+        <div class="nc ph" onclick="openSubmitForm('Branch B, child of Sekunthala Devi #31')" data-pfparent="Sekunthala Devi" data-pfbranch="B" data-pfgen="7"><div class="nc-avatar">🌿</div><div class="nc-name">Family details not yet added</div><div class="ph-cta">Submit yours →</div></div>
+      </div>
+    </div>
+
+  </div><!-- /gc-section brB daughters -->
+
+</section>
+
+<hr class="divider">
+
+<!-- GENERATION VIII -->
+<section class="section section-alt" id="gen8">
+  <div class="sec-label">Generation VIII</div>
+  <div class="sec-title">The Newest Arrivals</div>
+  <div class="sec-sub">Born since 2020 · COVID-era and beyond</div>
+
+  <div class="gen8-banner">
+    <h3>🌱 Growing the Tree</h3>
+    <p>Know a Gen VIII child born since 2020? <a href="#" onclick="openSubmitForm('Generation VIII');return false" style="color:var(--gold);font-weight:700">Submit their details →</a> and they'll appear here once verified.</p>
+  </div>
+
+  <div class="gen8-grid">
+
+    <div class="nc male" data-name="Raghavarenya" data-gen="Generation VIII" data-years="b. 2020" data-spouse="—" data-children="—" data-notes="Son of Ravi Teja (Sai) and Sindhu. Great-grandchild of Ganapathi Rao (#29)." onclick="openModal(this)">
+      <div class="nc-num">Gen VIII</div>
+      <div class="nc-avatar">RV</div>
+      <div class="nc-name">Raghavarenya</div>
+      <div class="nc-year">b. 2020</div>
+      <div class="nc-note">Son of Ravi Teja</div>
+    </div>
+
+    <div class="nc female" data-name="Aradhana Amrutha Varshini" data-gen="Generation VIII" data-years="—" data-spouse="—" data-children="—" data-notes="Daughter of Syam Prasad (Babu) and Lakkaraju Supraja. Great-grandchild of Bhavani Shankar Rao (#22)." onclick="openModal(this)">
+      <div class="nc-num">Gen VIII</div>
+      <div class="nc-avatar">AA</div>
+      <div class="nc-name">Aradhana Amrutha Varshini</div>
+      <div class="nc-note">Daughter of Syam Prasad</div>
+    </div>
+
+    <!-- INJECT:gen8-new -->
+    <div class="nc ph" onclick="openSubmitForm('Generation VIII')" data-pfparent="" data-pfbranch="" data-pfgen="8">
+      <div class="nc-avatar">🌱</div>
+      <div class="nc-name">New arrival?<br>Add to the tree</div>
+      <div class="ph-cta">Submit details →</div>
+    </div>
+
   </div>
 </section>
 
@@ -861,6 +1062,20 @@ function closeModal() { document.getElementById('modalOverlay').classList.remove
 function closeModalOutside(e) { if(e.target.id==='modalOverlay') closeModal(); }
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
+// ── SUBMIT FORM ───────────────────────────────────────────
+const FORM_URL = ''; // ← paste your Google Form URL here once created
+
+function openSubmitForm(context) {
+  if (!FORM_URL) {
+    alert('Submission form coming soon! Contact the family admin to add your details.');
+    return;
+  }
+  // Pre-fill entry fields if your form has them (replace entry.XXXXXXXXX with real IDs)
+  const url = new URL(FORM_URL);
+  if (context) url.searchParams.set('usp', 'pp_url');
+  window.open(url.toString(), '_blank', 'noopener,noreferrer');
+}
+
 // ── SVG CONNECTORS ────────────────────────────────────────
 function drawConnectors() {
   const svg = document.getElementById('treeSvg');
@@ -947,7 +1162,7 @@ window.addEventListener('load', () => {
   const statsObs = new IntersectionObserver(entries => {
     if(entries[0].isIntersecting) {
       animateCount(document.getElementById('cGen'), 7);
-      animateCount(document.getElementById('cMem'), 44, '+');
+      animateCount(document.getElementById('cMem'), 70, '+');
       animateCount(document.getElementById('cYrs'), 200, '+');
       animateCount(document.getElementById('cBr'), 2);
       statsObs.disconnect();
@@ -956,5 +1171,11 @@ window.addEventListener('load', () => {
   statsObs.observe(heroStats);
 });
 </script>
+
+<!-- FLOATING SUBMIT BUTTON -->
+<a class="fab" href="#" onclick="openSubmitForm('General');return false" title="Add your family details to the tree">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+  Add to Family Tree
+</a>
 </body>
 </html>
