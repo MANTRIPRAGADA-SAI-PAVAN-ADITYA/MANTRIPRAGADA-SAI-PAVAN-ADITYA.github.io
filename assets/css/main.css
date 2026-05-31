@@ -712,3 +712,104 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; }
 }
+
+/* ── ENHANCED: SVG icon wrappers ────────────────────────────────────────── */
+.value-icon svg,
+.skill-icon svg,
+.cert-icon svg,
+.recog-icon svg,
+.aspiration-icon svg,
+.project-icon svg {
+  width: 18px; height: 18px; display: block;
+  stroke: currentColor;
+}
+.value-icon svg { width: 16px; height: 16px; }
+.vi-purple { color: var(--accent3); }
+.vi-cyan   { color: var(--cyan); }
+.vi-green  { color: var(--green); }
+.vi-pink   { color: var(--pink); }
+.vi-orange { color: var(--orange); }
+
+/* Project icon replaces project-emoji */
+.project-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; flex-shrink: 0;
+}
+.project-icon svg { width: 20px; height: 20px; }
+.pi-purple { background: rgba(124,106,247,0.12); color: var(--accent3); }
+.pi-green  { background: rgba(74,222,128,0.1);  color: var(--green); }
+.pi-orange { background: rgba(251,146,60,0.1);  color: var(--orange); }
+.pi-cyan   { background: rgba(34,211,238,0.1);  color: var(--cyan); }
+.pi-blue   { background: rgba(96,165,250,0.12); color: #60a5fa; }
+.pi-red    { background: rgba(248,113,113,0.1); color: var(--red); }
+
+/* Aspiration icon — SVG style */
+.aspiration-icon svg { width: 28px; height: 28px; color: var(--accent3); }
+.aspiration-icon { display: block; margin-bottom: 0.9rem; }
+
+/* Recognition icon */
+.recog-icon {
+  width: 46px; height: 46px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(124,106,247,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent3);
+}
+.recog-icon svg { width: 20px; height: 20px; }
+
+/* Cert icon SVG */
+.cert-icon svg { width: 22px; height: 22px; color: inherit; }
+.cert-icon { color: var(--accent3); }
+
+/* Blog card gradient covers */
+.blog-card-cover {
+  height: 148px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.blog-card-cover.bc-purple {
+  background: linear-gradient(135deg, rgba(124,106,247,0.25) 0%, rgba(94,79,219,0.4) 100%);
+}
+.blog-card-cover.bc-green {
+  background: linear-gradient(135deg, rgba(74,222,128,0.15) 0%, rgba(22,163,74,0.35) 100%);
+}
+.blog-card-cover.bc-cyan {
+  background: linear-gradient(135deg, rgba(34,211,238,0.15) 0%, rgba(8,145,178,0.35) 100%);
+}
+.blog-card-cover.bc-orange {
+  background: linear-gradient(135deg, rgba(251,146,60,0.15) 0%, rgba(234,88,12,0.35) 100%);
+}
+.bc-label {
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; text-align: center; line-height: 1.6;
+  color: var(--text2); opacity: 0.9;
+}
+[data-theme="light"] .bc-label { color: var(--text3); }
+
+/* Skill icon SVG */
+.skill-icon svg { width: 20px; height: 20px; color: inherit; }
+
+/* ── ENHANCED: section visual refinements ───────────────────────────────── */
+.card-lg:hover { border-color: rgba(124,106,247,0.4); }
+.aspiration-card:hover .aspiration-icon svg { color: var(--accent); transition: color 0.3s; }
+.project-card:hover .project-icon { transform: scale(1.05); transition: transform 0.2s; }
+
+/* Footer enhancement */
+.footer {
+  padding: 2.5rem clamp(1.5rem,8vw,8rem);
+}
+.footer-inner { gap: 1.25rem; }
+
+/* Nav: slightly tighter spacing feels more editorial */
+.nav-links { gap: 0.15rem; }
+.nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+
+/* Page hero: tighter, more editorial */
+.page-hero { padding-bottom: 2.5rem; }
+.page-label { letter-spacing: 4px; }
+
+/* Timeline location marker */
+.tl-loc { font-size: 0.75rem; color: var(--text3); margin-bottom: 0.9rem; font-style: italic; letter-spacing: 0.2px; }
+
+/* Subtle top-border accent on skill cards already via --sk-color */
+.skill-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--text); }
