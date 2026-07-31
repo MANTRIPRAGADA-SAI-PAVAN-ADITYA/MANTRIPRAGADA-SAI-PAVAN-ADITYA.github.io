@@ -115,21 +115,47 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.stats-row').forEach(el => counterObserver.observe(el));
 
   // ── Contact form ───────────────────────────────────────
+  // To activate Formspree: sign up at formspree.io, create a form,
+  // and paste your endpoint here (e.g. 'https://formspree.io/f/xyzwerty')
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xpwzkjbv';
+
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn    = form.querySelector('[type=submit]');
       const status = document.getElementById('formStatus');
-      btn.disabled = true; btn.textContent = 'Sending…';
-      // Formspree or mailto fallback
-      const data = new FormData(form);
-      const mailto = `mailto:saipavanadityam@gmail.com?subject=${encodeURIComponent(data.get('subject') || 'Portfolio Enquiry')}&body=${encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`)}`;
-      window.location.href = mailto;
-      setTimeout(() => {
+      const data   = new FormData(form);
+
+      btn.disabled = true;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sending…';
+
+      if (FORMSPREE_ENDPOINT && !FORMSPREE_ENDPOINT.includes('REPLACE')) {
+        try {
+          const resp = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (resp.ok) {
+            if (status) { status.textContent = '✓ Message sent! I\'ll get back to you within 24 hours.'; status.className = 'form-status success'; }
+            form.reset();
+          } else {
+            const err = await resp.json();
+            throw new Error(err.error || 'Submission failed');
+          }
+        } catch (err) {
+          if (status) { status.textContent = '✗ Could not send — please email saipavanadityam@gmail.com directly.'; status.className = 'form-status error'; }
+        }
+      } else {
+        // mailto fallback
+        const mailto = `mailto:saipavanadityam@gmail.com?subject=${encodeURIComponent(data.get('subject') || 'Portfolio Enquiry')}&body=${encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`)}`;
+        window.location.href = mailto;
         if (status) { status.textContent = '✓ Opening your email client…'; status.className = 'form-status success'; }
-        btn.disabled = false; btn.textContent = 'Send Message';
-      }, 800);
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
     });
   }
 });
