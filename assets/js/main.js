@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Contact form ───────────────────────────────────────
   // To activate Formspree: sign up at formspree.io, create a form,
   // and paste your endpoint here (e.g. 'https://formspree.io/f/xyzwerty')
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xpwzkjbv';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mnjeyvyl';
 
   const form = document.getElementById('contactForm');
   if (form) {
